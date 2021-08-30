@@ -1,0 +1,58 @@
+﻿  Building.cpp
+D:\docs\githubRepo\scratch\scratch\Building.cpp(69,20): error C2196: case value 'BuildingID::energyGenerator' already used
+  draw.cpp
+  engine.cpp
+D:\docs\githubRepo\scratch\scratch\engine.cpp(8,47): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(9,47): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(12,55): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(12,41): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  input.cpp
+  main.cpp
+  tile.cpp
+  tileMap.cpp
+D:\docs\githubRepo\scratch\scratch\tileMap.cpp(12,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.cpp(12,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.cpp(14,88): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.cpp(14,59): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  update.cpp
+  Generating Code...

@@ -1,0 +1,24 @@
+﻿  draw.cpp
+D:\docs\githubRepo\scratch\scratch\engine.h(2,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  enemy.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(2,10): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  engine.cpp
+D:\docs\githubRepo\scratch\scratch\engine.h(2,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  input.cpp
+D:\docs\githubRepo\scratch\scratch\engine.h(2,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  gameinterface.cpp
+D:\docs\githubRepo\scratch\scratch\gameinterface.h(2,10): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  main.cpp
+D:\docs\githubRepo\scratch\scratch\Engine.h(2,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  projectile.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(2,10): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  resourseContainer.cpp
+D:\docs\githubRepo\scratch\scratch\ResourseContainer.h(1,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
+  tile.cpp
+D:\docs\githubRepo\scratch\scratch\tile.h(2,10): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  tileMap.cpp
+D:\docs\githubRepo\scratch\scratch\tile.h(2,10): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  Building.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(2,10): fatal error C1083: Cannot open include file: 'SFML\Graphics.hpp': No such file or directory
+  update.cpp
+D:\docs\githubRepo\scratch\scratch\engine.h(2,10): fatal error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
