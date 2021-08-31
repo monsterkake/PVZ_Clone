@@ -20,6 +20,9 @@ class Engine
 private:
     Event event;
     RenderWindow m_Window;
+    sf::RenderTexture renderTexture;
+    sf::Sprite renderSprite;
+
     ResourseContainer ResourseContainer;
     GameInterface gameInterface;
     TileMap tileMap;

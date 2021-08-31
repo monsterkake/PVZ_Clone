@@ -4,11 +4,12 @@
 #include "defValues.h"
 #include "buildingType.h"
 #include <iostream>
+#include "projectileType.h"
 
 using namespace sf;
 
 bool spawnEnemies = true;
-bool FPSmeasuring = false;
+bool FPSmeasuring = true;
 
 float timer = 1;
 int frames = 0; 
@@ -36,34 +37,33 @@ void Engine::update(float dtAsSeconds)
 	// Update Buildings
 	ProjectileID id_projectile;
 	ActionID id_action;
-	for (int i = 0; i < TILES_X; i++)
+	for (int i = 0; i < AMOUNT_OF_LINES; i++)
 	{
-		for (int j = 0; j < TILES_Y; j++)
+		for (int j = 0; j < TILES_IN_A_LINE; j++)
 		{
 			// if building is turret
-			if (tileMap.tiles[i][j].Building.type == BuildingType::turret)
+			if (tileMap.lines[i].tiles[j].Building.type == BuildingType::turret)
 			{
-				if (tileMap.tiles[i][j].Building.id != BuildingID::none)
+				if (tileMap.lines[i].tiles[j].Building.id != BuildingID::none)
 				{
 
-					id_projectile = tileMap.tiles[i][j].Building.update(dtAsSeconds);
+					id_projectile = tileMap.lines[i].tiles[j].Building.update(dtAsSeconds);
 
 					if (id_projectile != ProjectileID::none)
 					{
-
-						ProjectileContainer.addNew(id_projectile, tileMap.tiles[i][j].Building.getPosition());
+						ProjectileContainer.addNew(id_projectile, tileMap.lines[i].tiles[j].Building.getPosition() , i ); /* i - current line*/
 					}
 				}
 			}
 			else
 			{
 				// if building is economy
-				if (tileMap.tiles[i][j].Building.type == BuildingType::economy)
+				if (tileMap.lines[i].tiles[j].Building.type == BuildingType::economy)
 				{
 
-					if (tileMap.tiles[i][j].Building.id != BuildingID::none)
+					if (tileMap.lines[i].tiles[j].Building.id != BuildingID::none)
 					{
-						id_action = tileMap.tiles[i][j].Building.act(dtAsSeconds);
+						id_action = tileMap.lines[i].tiles[j].Building.act(dtAsSeconds);
 
 						if (id_action != ActionID::none)
 						{
@@ -92,7 +92,7 @@ void Engine::update(float dtAsSeconds)
 		}
 	}
 	//Update Projectiles
-	ProjectileContainer.moveProjectiles(dtAsSeconds);
+	ProjectileContainer.moveProjectiles(dtAsSeconds , EnemyContainer.getClosestEnemy());
 
 
 	if (spawnEnemies)
@@ -113,12 +113,30 @@ void Engine::update(float dtAsSeconds)
 			{
 				if (ProjectileContainer.Projectiles[j].id != ProjectileID::none)
 				{
-
-					if (ProjectileContainer.Projectiles[j].getBoundRect().intersects(EnemyContainer.enemy[i].getBoundRect()))
+					// if Projectile.type is bullet
+					if (ProjectileContainer.Projectiles[j].type == ProjectileType::Bullet) 
 					{
-						ProjectileContainer.Projectiles[j].id = ProjectileID::none;
-						EnemyContainer.enemy[i].hp -= ProjectileContainer.Projectiles[j].damage;
+						// if They are on the same line
+						//if (ProjectileContainer.Projectiles[j].line == EnemyContainer.enemy[i].line) 
+						//{
+							if (ProjectileContainer.Projectiles[j].getBoundRect().intersects(EnemyContainer.enemy[i].getBoundRect()))
+							{
+								ProjectileContainer.Projectiles[j].id = ProjectileID::none;
+								EnemyContainer.enemy[i].hp -= ProjectileContainer.Projectiles[j].damage;
+								//std::cout << ProjectileContainer.Projectiles[j].line << " __ " << EnemyContainer.enemy[i].line << std::endl;
+							}
+						//}
+						
 					}
+					if (ProjectileContainer.Projectiles[j].type == ProjectileType::Rocket)
+					{
+						if (ProjectileContainer.Projectiles[j].getBoundRect().intersects(EnemyContainer.enemy[i].getBoundRect()))
+						{
+							ProjectileContainer.Projectiles[j].id = ProjectileID::none;
+							EnemyContainer.enemy[i].hp -= ProjectileContainer.Projectiles[j].damage;
+						}
+					}
+					
 				}
 			}
 		}

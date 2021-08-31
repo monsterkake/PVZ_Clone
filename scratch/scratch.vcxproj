@@ -168,9 +168,11 @@
     <ClInclude Include="gameinterface.h" />
     <ClInclude Include="projectile.h" />
     <ClInclude Include="projectileID.h" />
+    <ClInclude Include="projectileType.h" />
     <ClInclude Include="ResourseContainer.h" />
     <ClInclude Include="states.h" />
     <ClInclude Include="tile.h" />
+    <ClInclude Include="tileLine.h" />
     <ClInclude Include="tileMap.h" />
     <ClInclude Include="Building.h" />
     <ClInclude Include="BuildingID.h" />

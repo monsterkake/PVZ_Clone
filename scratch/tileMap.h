@@ -1,12 +1,14 @@
 #pragma once
-#include "tile.h"
+//#include "tile.h"
+#include "tileLine.h"
 #include <SFML\Graphics.hpp>
 
 class TileMap : public Moveable
 {
 
 public:
-	Tile tiles[TILES_X][TILES_Y];
+	tileLine lines[AMOUNT_OF_LINES];
 	TileMap();
 	
 };
+

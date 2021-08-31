@@ -26,11 +26,11 @@ ProjectileID Building::update(float dtAsSeconds)
 		case BuildingID::t0:
 			return ProjectileID::p0;
 			break;
-		case BuildingID::t1:
-			return ProjectileID::p1;
+		case BuildingID::RocketLauncher1:
+			return ProjectileID::Rocket1;
 			break;
-		case BuildingID::t2:
-			return ProjectileID::p2;
+		case BuildingID::HangarBay1:
+			return ProjectileID::Fighter1;
 			break;
 		case BuildingID::t3:
 			return ProjectileID::p3;

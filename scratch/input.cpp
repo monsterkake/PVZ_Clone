@@ -40,10 +40,10 @@ void Engine::input()
 								SelectedBuilding = BuildingID::t0;
 								break;
 							case 1:
-								SelectedBuilding = BuildingID::t1;
+								SelectedBuilding = BuildingID::RocketLauncher1;
 								break;
 							case 2:
-								SelectedBuilding = BuildingID::t2;
+								SelectedBuilding = BuildingID::HangarBay1;
 								break;
 							case 3:
 								SelectedBuilding = BuildingID::t3;
@@ -111,18 +111,21 @@ void Engine::input()
 				//Build mode
 				if (MouseState == MouseStates::build)
 				{
-					for (int i = 0; i < TILES_X; i++)
+					for (int i = 0; i < AMOUNT_OF_LINES; i++)
 					{
-						for (int j = 0; j < TILES_Y; j++)
+						for (int j = 0; j < TILES_IN_A_LINE; j++)
 						{
-							if (tileMap.tiles[i][j].rec.contains(sf::Vector2i(mPos)))
+							if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mPos)))
 							{
 								if (resourseEnergy >= int(SelectedBuilding))
 								{
-
+									if (SelectedBuilding == BuildingID::HangarBay1)
+									{
+										ProjectileContainer.addHangar();
+									}
 									resourseEnergy -= int(SelectedBuilding);
-									tileMap.tiles[i][j].Building.id = SelectedBuilding;
-									tileMap.tiles[i][j].Building.type = SelectedBuildingType;
+									tileMap.lines[i].tiles[j].Building.id = SelectedBuilding;
+									tileMap.lines[i].tiles[j].Building.type = SelectedBuildingType;
 								}
 								
 								if (!isShiftButtonPressed) 
@@ -139,14 +142,14 @@ void Engine::input()
 					//Destory mode
 					if (MouseState == MouseStates::destroy)
 					{
-						for (int i = 0; i < TILES_X; i++)
+						for (int i = 0; i < AMOUNT_OF_LINES; i++)
 						{
-							for (int j = 0; j < TILES_Y; j++)
+							for (int j = 0; j < TILES_IN_A_LINE; j++)
 							{
-								if (tileMap.tiles[i][j].rec.contains(sf::Vector2i(mPos)))
+								if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mPos)))
 								{
-									tileMap.tiles[i][j].Building.id = BuildingID::none;
-									tileMap.tiles[i][j].Building.type = BuildingType::none;
+									tileMap.lines[i].tiles[j].Building.id = BuildingID::none;
+									tileMap.lines[i].tiles[j].Building.type = BuildingType::none;
 								}
 							}
 						}

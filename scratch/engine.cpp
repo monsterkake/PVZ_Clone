@@ -8,11 +8,12 @@ Engine::Engine()
     resolution.x = VideoMode::getDesktopMode().width;
     resolution.y = VideoMode::getDesktopMode().height;
     ResourseContainer.setResolution(resolution);
-    ResourseContainer.resizeTextures(sf::Vector2f(m_Window.getSize()));
+    //ResourseContainer.resizeTextures(sf::Vector2f(m_Window.getSize()));
     m_Window.create(VideoMode(resolution.x, resolution.y),
         "Simple Game Engine",
         Style::Fullscreen);
-
+ 
+    renderTexture.create(resolution.x, resolution.y);
 }
 
 void Engine::start()

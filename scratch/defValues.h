@@ -1,7 +1,7 @@
 #pragma once
 
-#define TILES_X 24
-#define TILES_Y 10
+#define TILES_IN_A_LINE 24
+#define AMOUNT_OF_LINES 10
 #define TILESIZE 75
 
 #define TILEMAP_POSITION_X 100
@@ -18,3 +18,5 @@
 #define SPAWN_DISTANCE 100
 
 #define Building_SIZE 50
+
+#define FIGHTER_ATTACK_DISTANCE 200

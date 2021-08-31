@@ -4,11 +4,13 @@
 #include "defValues.h"
 #include "projectileID.h"
 #include <iostream>
+#include "projectileType.h"
 
 class Projectile : public HasACollision 
 {
 public:
-	
+	int line = 0;
+	ProjectileType type = ProjectileType::none;
 	ProjectileID id = ProjectileID::none;
 	float speed = 1000.0;
 	float damage = 0;
@@ -26,15 +28,25 @@ class ProjectileContainer
 {
 public:
 	Projectile Projectiles[MAX_PROJECTILES];
+	int hangarCapacity = 0;
+	int amountOfFighters = 0;
 	int projectileAmount = 0;
 	ProjectileContainer() 
 	{
 
 	}
-	void addNew(ProjectileID id, sf::Vector2f position);
+
+	bool canAddNewFighter();
+
+	void addHangar();
+
+	void removehangar();
+
+	void addNew(ProjectileID id, sf::Vector2f position,int line);
 
 	void destroy(int index);
 
-	void moveProjectiles(float dtAsSeconds);
+	//void moveProjectiles(float dtAsSeconds);
+	void moveProjectiles(float dtAsSeconds, sf::Vector2f target);
 
 };
