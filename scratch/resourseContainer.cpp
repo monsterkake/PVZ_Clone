@@ -42,7 +42,10 @@ ResourseContainer::ResourseContainer()
 	animationTest.loadFromFile("resourses/animations/animationTest.png");
 	animationTestSprite.setTexture(animationTest);
 	animationTestSprite.setScale(1, (float)TILESIZE / (float)animationTest.getSize().y);
+	
 
+	laserBodyAnimation.loadFromFile("resourses/animations/laserBodyAnimation.png");
+	laserBodyAnimationSprite.setTexture(laserBodyAnimation);
 }
 
 Vector2f ResourseContainer::getResizeCoeffitient()

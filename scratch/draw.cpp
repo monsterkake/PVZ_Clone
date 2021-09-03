@@ -99,7 +99,19 @@ void Engine::draw()
 					UnitContainer.enemyContainer.indexOfClosestEnemyInLine[
 						ProjectileContainer.projectiles[i]->line]].getPosition());
 				//ResourseContainer.redRect.setScale
-				renderTexture.draw(ResourseContainer.redRect);
+				//renderTexture.draw(ResourseContainer.redRect);
+
+				ResourseContainer.laserBodyAnimationSprite.setTextureRect(ProjectileContainer.projectiles[i]->getFrame());
+				ResourseContainer.laserBodyAnimationSprite.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+				
+				ResourseContainer.laserBodyAnimationSprite.setScale(sf::Vector2f((
+					UnitContainer.enemyContainer.enemy[
+						UnitContainer.enemyContainer.indexOfClosestEnemyInLine[
+							ProjectileContainer.projectiles[i]->line]].getPosition().x -
+								ProjectileContainer.projectiles[i]->getPosition().x) / SPRITE_SIZE,1 ));
+				renderTexture.draw(ResourseContainer.laserBodyAnimationSprite);
+
+
 				break;
 			default:
 				break;

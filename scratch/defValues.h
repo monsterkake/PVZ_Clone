@@ -21,4 +21,6 @@
 
 #define Building_SIZE 50
 
+#define SPRITE_SIZE 100
+
 #define FIGHTER_ATTACK_DISTANCE 200

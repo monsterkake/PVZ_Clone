@@ -6,7 +6,7 @@
 #include <iostream>
 #include "projectileType.h"
 
-class Projectile : public HasACollision 
+class Projectile : public HasAnAnimation
 {
 protected:
 
@@ -54,6 +54,7 @@ public:
 	void update(float dtAsSeconds, sf::Vector2f target) override;
 	Laser()
 	{
+		animationSpeed = 0.1;
 		damage = 10;
 		type = ProjectileType::Laser;
 		speed = 0.0;

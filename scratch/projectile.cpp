@@ -94,9 +94,12 @@ void Rocket::update(float dtAsSeconds, sf::Vector2f target)
 
 void Laser::update(float dtAsSeconds, sf::Vector2f target)
 {
-	damage = 10.0 * dtAsSeconds;
+	damage = 100.0 * dtAsSeconds;
+	//damage = 10.0 * dtAsSeconds;
 	if (cooldownIsReady(dtAsSeconds))
 	{
 		id = ProjectileID::none;
+		
 	}
+	updateAnimation(dtAsSeconds);
 }

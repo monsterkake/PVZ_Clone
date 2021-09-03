@@ -8,6 +8,16 @@ class ResourseContainer
 {
     Vector2f resizeCoeffitient;
     Vector2f resolution;
+
+    sf::Texture greenRectTexture;
+    sf::Texture redRectTexture;
+    sf::Texture blueRectTexture;
+
+    sf::Texture laserBodyAnimation;
+
+    sf::Texture backGround;
+
+    sf::Texture animationTest;
     public:
     
     sf::Font font;
@@ -17,21 +27,16 @@ class ResourseContainer
 
     sf::RectangleShape debugRect;
 
-    sf::Texture greenRectTexture;
-    sf::Texture redRectTexture;
-    sf::Texture blueRectTexture;
-
     sf::Sprite greenRect;
     sf::Sprite redRect;
     sf::Sprite blueRect;
 
-    sf::Texture backGround;
+
     sf::Sprite backGroundSprite;
 
-    sf::Texture animationTest;
     sf::Sprite animationTestSprite;
     
-
+    sf::Sprite laserBodyAnimationSprite;
 
     ResourseContainer();
     Vector2f getResizeCoeffitient();
