@@ -30,9 +30,9 @@ void Engine::draw()
 
 			renderTexture.draw(ResourseContainer.greenRect);
 			//Draw Buildings
-			if (tileMap.lines[i].tiles[j].Building.id != BuildingID::none)
+			if (tileMap.lines[i].tiles[j].building != nullptr)
 			{
-				ResourseContainer.blueRect.setPosition(tileMap.lines[i].tiles[j].Building.getPosition());
+				ResourseContainer.blueRect.setPosition(tileMap.lines[i].tiles[j].building->getPosition());
 				renderTexture.draw(ResourseContainer.blueRect);
 			}
 
@@ -80,16 +80,37 @@ void Engine::draw()
 	//Draw Projectiles
 	for (int i = 0; i < MAX_PROJECTILES; i++)
 	{
-		if (ProjectileContainer.Projectiles[i].id != ProjectileID::none)
+		if (ProjectileContainer.projectiles[i] != nullptr)
 		{
-			ResourseContainer.redRect.setPosition(ProjectileContainer.Projectiles[i].getPosition());
-			renderTexture.draw(ResourseContainer.redRect);
+			switch (ProjectileContainer.projectiles[i]->id)
+			{
+			case ProjectileID::Bullet1:
+				ResourseContainer.redRect.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+				renderTexture.draw(ResourseContainer.redRect);
+				break;
+			case ProjectileID::Rocket1:
+				ResourseContainer.redRect.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+				renderTexture.draw(ResourseContainer.redRect);
+				break;
+			case ProjectileID::Laser1://
+				//ResourseContainer.redRect.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+				ResourseContainer.redRect.setPosition
+				(UnitContainer.enemyContainer.enemy[
+					UnitContainer.enemyContainer.indexOfClosestEnemyInLine[
+						ProjectileContainer.projectiles[i]->line]].getPosition());
+				//ResourseContainer.redRect.setScale
+				renderTexture.draw(ResourseContainer.redRect);
+				break;
+			default:
+				break;
+			}
+			
 			// draw debug rect
 			if (DebugMode)
 			{
-				ResourseContainer.debugRect.setPosition(ProjectileContainer.Projectiles[i].getPosition());
-				ResourseContainer.debugRect.setSize(sf::Vector2f(ProjectileContainer.Projectiles[i].getBoundRect().width,
-					ProjectileContainer.Projectiles[i].getBoundRect().height));
+				ResourseContainer.debugRect.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+				ResourseContainer.debugRect.setSize(sf::Vector2f(ProjectileContainer.projectiles[i]->getBoundRect().width,
+					ProjectileContainer.projectiles[i]->getBoundRect().height));
 				renderTexture.draw(ResourseContainer.debugRect);
 			}
 
@@ -98,21 +119,21 @@ void Engine::draw()
 	//Draw Enemies
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		if (EnemyContainer.enemy[i].id != EnemyID::none)
+		if (UnitContainer.enemyContainer.enemy[i].id != UnitID::none)
 		{
 
-
-			switch (EnemyContainer.enemy[i].id)
+			switch (UnitContainer.enemyContainer.enemy[i].id)
 			{
-			case EnemyID::e0:
-				ResourseContainer.animationTestSprite.setTextureRect(EnemyContainer.enemy[i].getFrame());
-				ResourseContainer.animationTestSprite.setPosition(EnemyContainer.enemy[i].getPosition());
+			case UnitID::e0:
+
+				ResourseContainer.animationTestSprite.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
+				ResourseContainer.animationTestSprite.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
 				renderTexture.draw(ResourseContainer.animationTestSprite);
 
 				break;
-			case EnemyID::e1:
-				ResourseContainer.animationTestSprite.setTextureRect(EnemyContainer.enemy[i].getFrame());
-				ResourseContainer.animationTestSprite.setPosition(EnemyContainer.enemy[i].getPosition());
+			case UnitID::e1:
+				ResourseContainer.animationTestSprite.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
+				ResourseContainer.animationTestSprite.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
 				renderTexture.draw(ResourseContainer.animationTestSprite);
 				break;
 			default:break;
@@ -120,19 +141,54 @@ void Engine::draw()
 			// draw debug rect
 			if (DebugMode)
 			{
-				ResourseContainer.debugRect.setPosition(EnemyContainer.enemy[i].getPosition());
-				ResourseContainer.debugRect.setSize(sf::Vector2f(EnemyContainer.enemy[i].getBoundRect().width,
-					EnemyContainer.enemy[i].getBoundRect().height));
+				ResourseContainer.debugRect.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				ResourseContainer.debugRect.setSize(sf::Vector2f(UnitContainer.enemyContainer.enemy[i].getBoundRect().width,
+					UnitContainer.enemyContainer.enemy[i].getBoundRect().height));
 				renderTexture.draw(ResourseContainer.debugRect);
 			}
 		}
 	}
-	//sf::Sprite sprite;
-	//sf::tex
-	// Отображаем все, что нарисовали
+	//Draw Units
+	 for (int i = 0; i < MAX_UNITS; i++)
+	{
+		if (UnitContainer.Units[i] != nullptr)
+		{
+
+			switch (UnitContainer.Units[i]->id)
+			{
+			case UnitID::e0:
+
+				ResourseContainer.animationTestSprite.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
+				ResourseContainer.animationTestSprite.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				renderTexture.draw(ResourseContainer.animationTestSprite);
+
+				break;
+			case UnitID::e1:
+				ResourseContainer.animationTestSprite.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
+				ResourseContainer.animationTestSprite.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				renderTexture.draw(ResourseContainer.animationTestSprite);
+				break;
+			case UnitID::Fighter1:
+				//ResourseContainer.blueRect.setTextureRect(UnitContainer.Units[i]->.getFrame());
+				ResourseContainer.redRect.setPosition(UnitContainer.Units[i]->getPosition());
+				renderTexture.draw(ResourseContainer.redRect);
+				break;
+			default:break;
+			}
+			// draw debug rect
+			if (DebugMode)
+			{
+				ResourseContainer.debugRect.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				ResourseContainer.debugRect.setSize(sf::Vector2f(UnitContainer.enemyContainer.enemy[i].getBoundRect().width,
+					UnitContainer.enemyContainer.enemy[i].getBoundRect().height));
+				renderTexture.draw(ResourseContainer.debugRect);
+			}
+		}
+	}
+	// Display everything
 
 	renderTexture.display();
-	
+	renderTexture.generateMipmap();
 	renderSprite.setTexture(renderTexture.getTexture());
 
 	m_Window.draw(renderSprite);

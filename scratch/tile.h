@@ -3,16 +3,19 @@
 #include "patterns.h"
 #include "Building.h"
 #include "defValues.h"
-
+#include "BuildingID.h"
 
 
 
 class Tile : public Moveable
 {
 public:
-	Building Building;
+	std::shared_ptr<Building> building;
+	//Building Building;
 	sf::IntRect rec;
-	void placeBuilding();
+	Tile();
+	void placeBuilding(BuildingID id);
+	void removeBuilding();
 };
 
 

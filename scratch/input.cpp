@@ -32,12 +32,12 @@ void Engine::input()
 					{
 						if (gameInterface.BuildingButtons[i].getTexture().getGlobalBounds().contains(mPos))
 						{
-							SelectedBuildingType = BuildingType::turret;
+							//SelectedBuildingType = BuildingType::turret;
 							MouseState = MouseStates::build;
 							switch (i)
 							{
 							case 0:
-								SelectedBuilding = BuildingID::t0;
+								SelectedBuilding = BuildingID::Turret1;
 								break;
 							case 1:
 								SelectedBuilding = BuildingID::RocketLauncher1;
@@ -46,9 +46,9 @@ void Engine::input()
 								SelectedBuilding = BuildingID::HangarBay1;
 								break;
 							case 3:
-								SelectedBuilding = BuildingID::t3;
+								SelectedBuilding = BuildingID::LaserTurret1;
 								break;
-							case 4:
+								/*case 4:
 								SelectedBuilding = BuildingID::t4;
 								break;
 							case 5:
@@ -59,7 +59,7 @@ void Engine::input()
 								break;
 							case 7:
 								SelectedBuilding = BuildingID::t7;
-								break;
+								break;*/
 							default:break;
 							}
 						}
@@ -69,15 +69,15 @@ void Engine::input()
 					{
 						if (gameInterface.economyButtons[i].getTexture().getGlobalBounds().contains(mPos))
 						{
-							SelectedBuildingType = BuildingType::economy;
+							//SelectedBuildingType = BuildingType::economy;
 							MouseState = MouseStates::build;
 							switch (i)
 							{
 							case 0:
-								SelectedBuilding = BuildingID::energyGenerator;
+								SelectedBuilding = BuildingID::EnergyGenerator;
 								break;
 							case 1:
-								SelectedBuilding = BuildingID::mineralsGenerator;
+								SelectedBuilding = BuildingID::MineralsGenerator;
 								break;
 								/*case 2:
 									SelectedBuilding = BuildingID::t2;
@@ -117,16 +117,13 @@ void Engine::input()
 						{
 							if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mPos)))
 							{
-								if (resourseEnergy >= int(SelectedBuilding))
-								{
-									if (SelectedBuilding == BuildingID::HangarBay1)
-									{
-										ProjectileContainer.addHangar();
-									}
-									resourseEnergy -= int(SelectedBuilding);
-									tileMap.lines[i].tiles[j].Building.id = SelectedBuilding;
-									tileMap.lines[i].tiles[j].Building.type = SelectedBuildingType;
-								}
+								//if (resourseEnergy >= int(SelectedBuilding))
+								//{
+
+								//	resourseEnergy -= int(SelectedBuilding);
+
+									tileMap.lines[i].tiles[j].placeBuilding(SelectedBuilding);
+								//}
 								
 								if (!isShiftButtonPressed) 
 								{
@@ -148,8 +145,7 @@ void Engine::input()
 							{
 								if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mPos)))
 								{
-									tileMap.lines[i].tiles[j].Building.id = BuildingID::none;
-									tileMap.lines[i].tiles[j].Building.type = BuildingType::none;
+									tileMap.lines[i].tiles[j].removeBuilding();
 								}
 							}
 						}

@@ -2,5 +2,5 @@
 
 enum class BuildingType 
 {
-	none,turret,economy
+	none,Turret,Generator,RocketLauncher,HangarBay, LaserTurret
 };

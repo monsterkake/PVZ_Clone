@@ -1,19 +1,17 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "ResourseContainer.h"
-#include "tile.h"
+//#include "tile.h"
 #include "gameinterface.h"
 #include "tileMap.h"
 #include "BuildingID.h"
 #include "states.h"
 #include "projectile.h"
-#include "enemy.h"
+//#include "enemy.h"
 #include "buildingType.h"
+#include "unitContainer.h"
 
 using namespace sf;
-
-
-
 
 class Engine
 {
@@ -27,7 +25,8 @@ private:
     GameInterface gameInterface;
     TileMap tileMap;
     ProjectileContainer ProjectileContainer;
-    EnemyContainer EnemyContainer;
+    UnitContainer UnitContainer;
+    //EnemyContainer EnemyContainer;
 
     BuildingType SelectedBuildingType = BuildingType::none;
     BuildingID SelectedBuilding = BuildingID::none;

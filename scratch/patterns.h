@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "defValues.h"
+#include "unitType.h"
+#include "unitID.h"
 
 class Moveable 
 {
@@ -24,7 +26,6 @@ public:
 class HasACollision : public Moveable 
 {
 protected:
-	//std::shared_ptr<sf::RectangleShape> texture;
 	std::shared_ptr<sf::RectangleShape> texture;
 	sf::FloatRect boundRect;
 public:
@@ -88,4 +89,69 @@ public:
 		return animationFrame;
 	}
 	
+};
+
+class HasACooldown 
+{
+protected:
+	float actionSpeed = 1.0;
+	float cooldown = actionSpeed;
+
+	bool cooldownIsReady(float dtAsSeconds)
+	{
+		cooldown = cooldown - dtAsSeconds;
+		if (cooldown < 0)
+		{
+			cooldown = actionSpeed;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	};
+};
+
+class Unit : public HasAnAnimation, public HasACooldown
+{
+protected:
+	float speed;
+	float hp;
+	bool ReadyToFire = false;
+public:
+	UnitID id;
+	UnitType type;
+
+	virtual void update(float dtAsSeconds, sf::Vector2f target) = 0;
+
+	bool isReadyToFire()
+	{
+		if (ReadyToFire)
+		{
+			ReadyToFire = false;
+			return true;
+		}
+		return false;
+	}
+
+	void recieveDamage(float damage)
+	{
+		hp -= damage;
+	}
+	void setHp(float hp)
+	{
+		this->hp = hp;
+	}
+	float getHp()
+	{
+		return hp;
+	}
+	void setSpeed(float speed)
+	{
+		this->speed = speed;
+	}
+	float getSpeed()
+	{
+		return speed;
+	}
 };

@@ -11,11 +11,13 @@
 #define AMOUNT_OF_Building_BUTTONS 8
 #define AMOUNT_OF_ECONOMY_BUTTONS 2
 
-#define MAX_PROJECTILES 100
+#define MAX_PROJECTILES 300
 #define PROJECTILE_SIZE 30
 
 #define MAX_ENEMIES 100
 #define SPAWN_DISTANCE 100
+
+#define MAX_UNITS 200
 
 #define Building_SIZE 50
 

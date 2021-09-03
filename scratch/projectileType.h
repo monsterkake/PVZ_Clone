@@ -2,5 +2,5 @@
 
 enum class ProjectileType 
 {
-	none,Bullet,Rocket,Fighter
+	none,Bullet,Rocket,Laser
 };

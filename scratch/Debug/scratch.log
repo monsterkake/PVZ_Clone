@@ -1,2 +1,41 @@
-﻿  input.cpp
+﻿  draw.cpp
+  engine.cpp
+D:\docs\githubRepo\scratch\scratch\engine.cpp(8,47): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(9,47): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(12,55): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(12,41): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(16,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(16,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  input.cpp
+  main.cpp
+  projectile.cpp
+D:\docs\githubRepo\scratch\scratch\projectile.cpp(75,50): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\projectile.cpp(81,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  update.cpp
+D:\docs\githubRepo\scratch\scratch\update.cpp(38,15): warning C4101: 'id_projectile': unreferenced local variable
+  Generating Code...
   scratch.vcxproj -> D:\docs\githubRepo\scratch\Debug\scratch.exe

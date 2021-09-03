@@ -11,28 +11,29 @@ void EnemyContainer::spawnEnemies(float dtAsSeconds)
 
 		auto randomline = (rand() % AMOUNT_OF_LINES);
 
-		addNew(EnemyID::e0, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
+		addNew(UnitID::e0, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
 			randomline * TILESIZE + TILEMAP_POSITION_Y),
 			randomline);
 		
 	}
 }
 
-void EnemyContainer::addNew(EnemyID id, sf::Vector2f position, int line)
+void EnemyContainer::addNew(UnitID id, sf::Vector2f position, int line)
 {
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
 		//If element is not occupied
-		if (enemy[i].id == EnemyID::none)
+		if (enemy[i].id == UnitID::none)
 		{
+			indexOfClosestEnemyInLine[line] = i;
 			enemy[i].line = line;
 			enemy[i].id = id;
 			enemy[i].setPosition(position);
 			amountOfEnemies++;
 			switch (id)
 			{
-			case EnemyID::e0:
-				enemy[i].hp = 100;
+			case UnitID::e0:
+				enemy[i].setHp(100);
 				break;
 			default:break;
 			}
@@ -43,19 +44,7 @@ void EnemyContainer::addNew(EnemyID id, sf::Vector2f position, int line)
 
 void EnemyContainer::destroy(int index)
 {
-	enemy[index].id = EnemyID::none;
-	//if (index == indexOfClosestEnemy) 
-	//{
-	//	for (int i = 0; i < MAX_ENEMIES; i++)
-	//	{
-	//		if(enemy[i].id != EnemyID::none)
-	//			if (enemy[indexOfClosestEnemy].getPosition().x > enemy[i].getPosition().x)
-	//			{
-	//				indexOfClosestEnemy = i;
-	//			}
-	//	}
-
-	//}
+	enemy[index].id = UnitID::none;
 	enemy[index].setPosition(sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE, 0));
 	amountOfEnemies--;
 }
@@ -64,26 +53,27 @@ void EnemyContainer::updateEnemies(float dtAsSeconds)
 {
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		//If element occupied
-		if (enemy[i].id != EnemyID::none)
+		//If element is occupied
+		if (enemy[i].id != UnitID::none)
 		{
 			if (enemy[indexOfClosestEnemy].getPosition().x > enemy[i].getPosition().x)
 			{
 				indexOfClosestEnemy = i;
 			}
-			if (enemy[i].hp < 0)
+			if (enemy [ indexOfClosestEnemyInLine [ enemy[i].line ] ].getPosition().x > enemy[i].getPosition().x) 
+			{
+				indexOfClosestEnemyInLine[enemy[i].line] = i;
+			}
+
+			if (enemy[i].getHp() < 0)
 				destroy(i);
 			else
 			{
-				enemy[i].move(sf::Vector2f(dtAsSeconds * enemy[i].speed, 0));
+				enemy[i].move(sf::Vector2f(dtAsSeconds * enemy[i].getSpeed(), 0));
 				enemy[i].updateAnimation(dtAsSeconds);
-				
 			}
 
 		}
-
-
-		//std::cout << indexOfClosestEnemy << std::endl;
 	}
 }
 

@@ -153,6 +153,7 @@
     <ClCompile Include="tile.cpp" />
     <ClCompile Include="tileMap.cpp" />
     <ClCompile Include="Building.cpp" />
+    <ClCompile Include="unit.cpp" />
     <ClCompile Include="update.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +162,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="defValues.h" />
     <ClInclude Include="enemy.h" />
-    <ClInclude Include="enemyID.h" />
+    <ClInclude Include="unit.h" />
+    <ClInclude Include="unitID.h" />
     <ClInclude Include="label.h" />
     <ClInclude Include="patterns.h" />
     <ClInclude Include="engine.h" />
@@ -176,6 +178,8 @@
     <ClInclude Include="tileMap.h" />
     <ClInclude Include="Building.h" />
     <ClInclude Include="BuildingID.h" />
+    <ClInclude Include="unitContainer.h" />
+    <ClInclude Include="unitType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

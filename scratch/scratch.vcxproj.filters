@@ -51,6 +51,9 @@
     <ClCompile Include="Building.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="unit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -89,7 +92,7 @@
     <ClInclude Include="enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="enemyID.h">
+    <ClInclude Include="unitID.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="actionID.h">
@@ -111,6 +114,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="projectileType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unitContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unitType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
