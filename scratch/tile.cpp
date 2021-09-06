@@ -67,8 +67,10 @@ void Tile::placeBuilding(BuildingID id)
 		building->type = BuildingType::Generator;
 		
 	}
-	building->setPosition(sf::Vector2f(position.x, position.y));
-
+	if (building != nullptr) 
+	{
+		building->setPosition(sf::Vector2f(position.x, position.y));
+	}
 }
 
 void Tile::removeBuilding()

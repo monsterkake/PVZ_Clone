@@ -45,7 +45,7 @@ void EnemyContainer::addNew(UnitID id, sf::Vector2f position, int line)
 void EnemyContainer::destroy(int index)
 {
 	enemy[index].id = UnitID::none;
-	enemy[index].setPosition(sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE, 0));
+	enemy[index].setPosition(sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE + 1000, 0));
 	amountOfEnemies--;
 }
 
@@ -72,7 +72,6 @@ void EnemyContainer::updateEnemies(float dtAsSeconds)
 				enemy[i].move(sf::Vector2f(dtAsSeconds * enemy[i].getSpeed(), 0));
 				enemy[i].updateAnimation(dtAsSeconds);
 			}
-
 		}
 	}
 }

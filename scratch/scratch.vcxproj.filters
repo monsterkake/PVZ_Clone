@@ -9,34 +9,39 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Header Files\Building">
+      <UniqueIdentifier>{be69a019-9627-4295-bee0-9129722afcf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unit">
+      <UniqueIdentifier>{6f6cff30-31db-4100-9e9a-b7303464d162}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Projectile">
+      <UniqueIdentifier>{31e12c35-3900-43aa-abe2-4ca5fd827e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\system">
+      <UniqueIdentifier>{dd0d5860-ab75-4856-a6f4-52af1841a575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tilemap">
+      <UniqueIdentifier>{281afaa3-ecfe-46f7-a0d1-18416b724acf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Widgets">
+      <UniqueIdentifier>{d7c3481e-ffaa-46ae-976e-dc1ca28f8e27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{c52655c9-2d9a-404b-b6dd-7fd537084c42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Technology">
+      <UniqueIdentifier>{9400a019-21d0-41f1-a941-96949ea882a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="engine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="update.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gameinterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tileMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="resourseContainer.cpp">
@@ -54,76 +59,106 @@
     <ClCompile Include="unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="update.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="draw.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gameinterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tileMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourseContainer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="states.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="defValues.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="patterns.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="projectile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="projectileID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="unitID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="actionID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BuildingID.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Building.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Building</Filter>
     </ClInclude>
     <ClInclude Include="buildingType.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Building</Filter>
     </ClInclude>
-    <ClInclude Include="label.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tileLine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="projectileType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="unitContainer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Building.h">
+      <Filter>Header Files\Building</Filter>
     </ClInclude>
     <ClInclude Include="unitType.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="unitID.h">
+      <Filter>Header Files\Unit</Filter>
     </ClInclude>
     <ClInclude Include="unit.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="unitContainer.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Header Files\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="projectileType.h">
+      <Filter>Header Files\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="projectileID.h">
+      <Filter>Header Files\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile.h">
+      <Filter>Header Files\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="actionID.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="defValues.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="states.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="tileMap.h">
+      <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="tileLine.h">
+      <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="tile.h">
+      <Filter>Header Files\Tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="label.h">
+      <Filter>Header Files\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourseContainer.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="patterns.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="popUpWindow.h">
+      <Filter>Header Files\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="gameinterface.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="technology.h">
+      <Filter>Header Files\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnologyID.h">
+      <Filter>Header Files\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="techTree.h">
+      <Filter>Header Files\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="researchPopUpWindow.h">
+      <Filter>Header Files\system</Filter>
+    </ClInclude>
+    <ClInclude Include="widget.h">
+      <Filter>Header Files\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,11 +13,23 @@ class ResourseContainer
     sf::Texture redRectTexture;
     sf::Texture blueRectTexture;
 
-    sf::Texture laserBodyAnimation;
 
-    sf::Texture backGround;
 
-    sf::Texture animationTest;
+    sf::Texture TextureBackGround;
+
+    sf::Texture TextureAnimationTest;
+
+    sf::Texture popUpWindowBase;
+
+    sf::Texture buttonBase;
+    //Buildings
+    sf::Texture TextureAnimationTurret;
+    sf::Texture TextureAnimationRocketlauncher;
+    sf::Texture TextureAnimationHangarBay;
+    sf::Texture TextureAnimationLaserTurret;
+    //Projectiles
+    sf::Texture TextureAnimationRocket;
+    sf::Texture TextureLaserBodyAnimation;
     public:
     
     sf::Font font;
@@ -32,11 +44,23 @@ class ResourseContainer
     sf::Sprite blueRect;
 
 
-    sf::Sprite backGroundSprite;
+    sf::Sprite BackGround;
 
-    sf::Sprite animationTestSprite;
+    sf::Sprite AnimationTest;
     
-    sf::Sprite laserBodyAnimationSprite;
+
+
+    sf::Sprite popUpWindowBaseSprite;
+
+    sf::Sprite buttonBaseSprite;
+    //Buildings
+    sf::Sprite AnimationTurret;
+    sf::Sprite AnimationRocketlauncher;
+    sf::Sprite AnimationHangarBay;
+    sf::Sprite AnimationLaserTurret;
+
+    sf::Sprite AnimationRocket;
+    sf::Sprite LaserBodyAnimation;
 
     ResourseContainer();
     Vector2f getResizeCoeffitient();

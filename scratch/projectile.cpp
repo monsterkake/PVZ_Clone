@@ -61,6 +61,7 @@ void ProjectileContainer::updateProjectiles(float dtAsSeconds, sf::Vector2f targ
 
 void Bullet::update(float dtAsSeconds, sf::Vector2f target)
 {
+	updateAnimation(dtAsSeconds);
 	move(sf::Vector2f(dtAsSeconds * speed, 0));
 	//Check if it flew off screen
 	if (position.x > (SPAWN_DISTANCE + TILESIZE * TILES_IN_A_LINE))
@@ -71,21 +72,41 @@ void Bullet::update(float dtAsSeconds, sf::Vector2f target)
 
 void Rocket::update(float dtAsSeconds, sf::Vector2f target)
 {
+	updateAnimation(dtAsSeconds);
+	//float verticalOffset = TILESIZE / 2;
+	float cos_ ;
+
+		cos_ = cosf((target.y  - position.y) /
+		(sqrt(
+			pow(
+				target.x - position.x, 2)
+			+ pow(
+				target.y  - position.y, 2))));
+
+
+
+	std::cout << acosf(cos_) << std::endl;
+	
+	angle = acosf(cos_) * 100;
+
 	float dx = speed * cosf((target.y - position.y) /
 		(sqrt(
 			pow(
 				target.x - position.x, 2)
 			+ pow(
 				target.y - position.y, 2))));
+
 	float dy = sqrt(pow(speed, 2) - pow(dx, 2));
 
 	if (target.y - position.y < 0)
 	{
 		dy *= -1;
+		angle *= -1;
 	}
 	if (target.x - position.x < 0)
 	{
 		dx *= -1;
+		angle *= -1;
 	}
 
 
@@ -94,6 +115,7 @@ void Rocket::update(float dtAsSeconds, sf::Vector2f target)
 
 void Laser::update(float dtAsSeconds, sf::Vector2f target)
 {
+	updateAnimation(dtAsSeconds);
 	damage = 100.0 * dtAsSeconds;
 	//damage = 10.0 * dtAsSeconds;
 	if (cooldownIsReady(dtAsSeconds))
@@ -101,5 +123,5 @@ void Laser::update(float dtAsSeconds, sf::Vector2f target)
 		id = ProjectileID::none;
 		
 	}
-	updateAnimation(dtAsSeconds);
+	
 }

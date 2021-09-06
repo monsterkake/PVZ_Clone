@@ -10,6 +10,8 @@
 //#include "enemy.h"
 #include "buildingType.h"
 #include "unitContainer.h"
+#include "researchPopUpWindow.h"
+#include "techTree.h"
 
 using namespace sf;
 
@@ -26,11 +28,19 @@ private:
     TileMap tileMap;
     ProjectileContainer ProjectileContainer;
     UnitContainer UnitContainer;
-    //EnemyContainer EnemyContainer;
+    
+    ResearchPopUpWindow researchWindow;
 
+
+
+    //Mouse handling
+    sf::Vector2f mousePosition;
     BuildingType SelectedBuildingType = BuildingType::none;
     BuildingID SelectedBuilding = BuildingID::none;
     MouseStates MouseState = MouseStates::NotOccupied;
+    sf::Vector2f savedPressLeftClickLocation;
+
+    bool showResearchWindow = false;
 
     bool isShiftButtonPressed = false;
 
@@ -38,6 +48,10 @@ private:
 
     int resourseEnergy = 10;
     int resourseMinerals = 10;
+
+    int baseEnergyIncome = 1;
+    int baseMineralsIncome = 1;
+    int baseResearchIncome = 10;
 
     void input();
     void update(float dtAsSeconds);

@@ -26,32 +26,26 @@ public:
 class HasACollision : public Moveable 
 {
 protected:
-	std::shared_ptr<sf::RectangleShape> texture;
 	sf::FloatRect boundRect;
 public:
 	HasACollision() 
 	{
-		texture = std::shared_ptr<sf::RectangleShape>(new sf::RectangleShape);
+		
 	}
-	sf::RectangleShape& getTexture()
-	{
-		return *texture;
-	}
+
 	void setPosition(sf::Vector2f position) override
 	{
 		this->position = position;
-		texture->setPosition(position);
 		boundRect.left = position.x;
 		boundRect.top = position.y;
 	}
 	void move(sf::Vector2f position) override
 	{
 		this->position += position;
-		texture->setPosition(this->position);
 		boundRect.left += position.x;
 		boundRect.top += position.y;
 	}
-	sf::FloatRect getBoundRect()
+	virtual sf::FloatRect getBoundRect()
 	{
 		return boundRect;
 	}
@@ -70,6 +64,8 @@ protected:
 	int frame = 0;
 	int maxFrame = 4;
 	sf::IntRect animationFrame;
+	int frameSize = SPRITE_SIZE;
+	
 public:
 	void updateAnimation(float dtAsSeconds)
 	{
@@ -77,7 +73,7 @@ public:
 		if (animationProgress < 0)
 		{
 			animationProgress = animationSpeed;
-			animationFrame = sf::IntRect(0 + frame * 100, 0, 100, 100 );
+			animationFrame = sf::IntRect(0 + frame * frameSize, 0, frameSize, frameSize);
 			//animationFrame.left += 100
 			frame++;
 			if (frame > maxFrame)
@@ -88,7 +84,11 @@ public:
 	{
 		return animationFrame;
 	}
-	
+	void setFrameSize(int size)
+	{
+		frameSize = size;
+	}
+
 };
 
 class HasACooldown 
@@ -153,5 +153,40 @@ public:
 	float getSpeed()
 	{
 		return speed;
+	}
+};
+
+class HasARenderTexture 
+{
+protected:
+	sf::RenderTexture m_renderTexture;
+	std::shared_ptr<sf::Sprite> m_sprite;
+public:
+	HasARenderTexture() 
+	{
+		sf::Vector2f resolution;
+		resolution.x = sf::VideoMode::getDesktopMode().width;
+		resolution.y = sf::VideoMode::getDesktopMode().height;
+		m_sprite = std::shared_ptr<sf::Sprite>(new sf::Sprite);
+		m_renderTexture.create(resolution.x, resolution.y);
+	}
+	sf::Sprite& getSprite()
+	{
+		return *m_sprite;
+	};
+};
+
+class HasRotation
+{
+protected:
+	float angle = 0;
+public:
+	void setAngle(float angle)
+	{
+		this->angle = angle ;
+	}
+	float getAngle()
+	{
+		return angle;
 	}
 };

@@ -6,7 +6,7 @@
 #include <iostream>
 #include "projectileType.h"
 
-class Projectile : public HasAnAnimation
+class Projectile : public HasAnAnimation, public HasRotation
 {
 protected:
 
@@ -20,7 +20,8 @@ public:
 
 	Projectile() 
 	{
-		setBoundRect(sf::FloatRect(0, 0, 30, 30));
+		setBoundRect(sf::FloatRect(0, 0, PROJECTILE_SIZE, PROJECTILE_SIZE));
+		
 	}
 };
 
@@ -42,6 +43,7 @@ public:
 	void update(float dtAsSeconds, sf::Vector2f target) override;
 	Rocket() 
 	{
+		//setFrameSize(PROJECTILE_SIZE);
 		damage = 10;
 		type = ProjectileType::Rocket;
 		speed = 500.0;

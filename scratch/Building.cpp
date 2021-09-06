@@ -14,6 +14,7 @@ BuildingType Building::getType()
 
 ActionID Turret::update(float dtAsSeconds) 
 {
+	updateAnimation(dtAsSeconds);
 	if (cooldownIsReady(dtAsSeconds))
 	{
 		switch (id)
@@ -33,6 +34,7 @@ ActionID Turret::update(float dtAsSeconds)
 
 ActionID RocketLauncher::update(float dtAsSeconds)
 {
+	updateAnimation(dtAsSeconds);
 	if (cooldownIsReady(dtAsSeconds))
 	{
 		switch (id)
@@ -52,6 +54,7 @@ ActionID RocketLauncher::update(float dtAsSeconds)
 
 ActionID HangarBay::update(float dtAsSeconds)
 {
+	updateAnimation(dtAsSeconds);
 	if (cooldownIsReady(dtAsSeconds))
 	{
 		if (FighterIsNotReleased)
@@ -75,6 +78,7 @@ ActionID HangarBay::update(float dtAsSeconds)
 
 ActionID LaserTurret::update(float dtAsSeconds)
 {
+	updateAnimation(dtAsSeconds);
 	if (cooldownIsReady(dtAsSeconds))
 	{
 		switch (id)
@@ -93,6 +97,7 @@ ActionID LaserTurret::update(float dtAsSeconds)
 
 ActionID Generator::update(float dtAsSeconds)
 {
+	updateAnimation(dtAsSeconds);
 	if (cooldownIsReady(dtAsSeconds))
 	{
 		switch (id)

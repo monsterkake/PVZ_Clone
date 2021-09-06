@@ -7,7 +7,7 @@
 #include "actionID.h"
 #include "buildingType.h"
 
-class Building : public HasACollision, public HasACooldown
+class Building : public HasAnAnimation, public HasACooldown
 {
 public:
     BuildingType type = BuildingType::none;

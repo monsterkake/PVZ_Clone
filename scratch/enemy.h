@@ -12,11 +12,16 @@ public:
 	void update(float dtAsSeconds, sf::Vector2f target) override {};
 	Enemy() 
 	{
+		animationSpeed = 1;
 		id = UnitID::none;
 		speed = -10.0;
 		hp = 100;
 		setBoundRect(sf::FloatRect(0, 0, 10, TILESIZE));
 	}
+	sf::FloatRect getBoundRect() override
+	{
+		return boundRect;
+	} 
 };
 
 class EnemyContainer 
@@ -46,4 +51,6 @@ public:
 	void updateEnemies(float dtAsSeconds);
 
 	sf::Vector2f getClosestEnemy();
+
+	
 };

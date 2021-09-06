@@ -2,25 +2,40 @@
 
 #include <SFML\Graphics.hpp>
 #include "patterns.h"
+#include "defValues.h"
+#include "label.h"
+#include "widget.h"
 
-class Button : public HasACollision
+class Button :  public Widget
 {
-	std::string string;
+	std::shared_ptr<Label> label;
 public:
+	
 	Button()
 	{
-		texture = std::shared_ptr<sf::RectangleShape>(new sf::RectangleShape);
-
-		texture->setFillColor(sf::Color::Cyan);
-		texture->setSize(sf::Vector2f(50, 50));
-
+		label = std::shared_ptr<Label>(new Label);
+		setBoundRect(sf::FloatRect(0, 0, BUTTON_SIZE, BUTTON_SIZE));
 	};
-	void setString(std::string string)
+	void setText(std::string string)
 	{
-		this->string = string;
+		label->setText(string);
 	}
-	std::string getString()
+	sf::Text& getText()
 	{
-		return string;
+		return label->getText();
+	}
+	void setPosition(sf::Vector2f position) override
+	{
+		this->position = position + offset;
+		boundRect.left = this->position.x;
+		boundRect.top = this->position.y;
+		label->setPosition(this->position + sf::Vector2f(0,50));
+	}
+	void move(sf::Vector2f position) override
+	{
+		this->position += position + offset;
+		boundRect.left += this->position.x;
+		boundRect.top += this->position.y;
+		label->setPosition(this->position + sf::Vector2f(0, 50));
 	}
 };

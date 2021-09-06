@@ -33,19 +33,47 @@ ResourseContainer::ResourseContainer()
 
 	blueRect.setTexture(blueRectTexture);
 	blueRect.setScale((float)TILESIZE / (float)redRectTexture.getSize().x, (float)TILESIZE / (float)redRectTexture.getSize().y);
+	//interface
+	TextureBackGround.loadFromFile("resourses/sprites/backGround_1.jpg");
+	BackGround.setTexture(TextureBackGround);
+	BackGround.setScale(sf::Vector2f((float)1920 / (float)TextureBackGround.getSize().x ,
+		(float)1080 / (float)TextureBackGround.getSize().y));
 
-	backGround.loadFromFile("resourses/sprites/background_1.jpg");
-	backGroundSprite.setTexture(backGround);
-	backGroundSprite.setScale(sf::Vector2f((float)1920 / (float)backGround.getSize().x ,
-		(float)1080 / (float)backGround.getSize().y));
+	popUpWindowBase.loadFromFile("resourses/sprites/PopUpWindowBase.png");
+	popUpWindowBaseSprite.setTexture(popUpWindowBase);
+
+	buttonBase.loadFromFile("resourses/sprites/buttonBase.png");
+	buttonBaseSprite.setTexture(buttonBase);
 	// animations
-	animationTest.loadFromFile("resourses/animations/animationTest.png");
-	animationTestSprite.setTexture(animationTest);
-	animationTestSprite.setScale(1, (float)TILESIZE / (float)animationTest.getSize().y);
+	TextureAnimationTest.loadFromFile("resourses/animations/animationTest.png");
+	AnimationTest.setTexture(TextureAnimationTest);
+	AnimationTest.setScale(1, (float)TILESIZE / (float)TextureAnimationTest.getSize().y);
 	
 
-	laserBodyAnimation.loadFromFile("resourses/animations/laserBodyAnimation.png");
-	laserBodyAnimationSprite.setTexture(laserBodyAnimation);
+
+	//Buildings
+	TextureAnimationHangarBay.loadFromFile("resourses/animations/buildings/animationHangarBay.png");
+	TextureAnimationLaserTurret.loadFromFile("resourses/animations/buildings/animationLaserTurret.png");
+	TextureAnimationRocketlauncher.loadFromFile("resourses/animations/buildings/animationRocketLauncher.png");
+	TextureAnimationTurret.loadFromFile("resourses/animations/buildings/animationTurret.png");
+	
+	AnimationTurret.setTexture(TextureAnimationTurret);
+	AnimationLaserTurret.setTexture(TextureAnimationLaserTurret);
+	AnimationRocketlauncher.setTexture(TextureAnimationRocketlauncher);
+	AnimationHangarBay.setTexture(TextureAnimationHangarBay);
+
+	AnimationTurret.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationLaserTurret.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationRocketlauncher.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationHangarBay.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	//Projectiles
+	TextureLaserBodyAnimation.loadFromFile("resourses/animations/projectiles/animationLaserBody.png");
+	TextureAnimationRocket.loadFromFile("resourses/animations/projectiles/animationRocket.png");
+
+	LaserBodyAnimation.setTexture(TextureLaserBodyAnimation);
+	AnimationRocket.setTexture(TextureAnimationRocket);
+
+	//AnimationRocket.setScale((float)PROJECTILE_SIZE / (float)SPRITE_SIZE, (float)PROJECTILE_SIZE / (float)SPRITE_SIZE);
 }
 
 Vector2f ResourseContainer::getResizeCoeffitient()

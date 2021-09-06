@@ -11,7 +11,6 @@ class Tile : public Moveable
 {
 public:
 	std::shared_ptr<Building> building;
-	//Building Building;
 	sf::IntRect rec;
 	Tile();
 	void placeBuilding(BuildingID id);

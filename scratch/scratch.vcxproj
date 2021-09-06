@@ -151,7 +151,6 @@
     <ClCompile Include="projectile.cpp" />
     <ClCompile Include="resourseContainer.cpp" />
     <ClCompile Include="tile.cpp" />
-    <ClCompile Include="tileMap.cpp" />
     <ClCompile Include="Building.cpp" />
     <ClCompile Include="unit.cpp" />
     <ClCompile Include="update.cpp" />
@@ -162,6 +161,11 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="defValues.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="popUpWindow.h" />
+    <ClInclude Include="researchPopUpWindow.h" />
+    <ClInclude Include="technology.h" />
+    <ClInclude Include="TechnologyID.h" />
+    <ClInclude Include="techTree.h" />
     <ClInclude Include="unit.h" />
     <ClInclude Include="unitID.h" />
     <ClInclude Include="label.h" />
@@ -180,6 +184,7 @@
     <ClInclude Include="BuildingID.h" />
     <ClInclude Include="unitContainer.h" />
     <ClInclude Include="unitType.h" />
+    <ClInclude Include="widget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

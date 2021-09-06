@@ -9,31 +9,47 @@
 using namespace sf;
 
 bool spawnEnemies = true;
-bool FPSmeasuring = true;
+bool FPSmeasuring = false;
 
 float timer = 1;
-int frames = 0; 
+int frames = 0;
 
 void Engine::update(float dtAsSeconds)
 {
-	if (DebugMode) 
+	
+
+	if (DebugMode)
 	{
 		resourseEnergy = 10000;
 		resourseMinerals = 10000;
 	}
-	//Measure FPS
-	if (FPSmeasuring) 
+	
+	// income update
+	frames++;
+	timer -= dtAsSeconds;
+	if (timer < 0)
 	{
-		frames++;
-		timer -= dtAsSeconds;
-		if (timer < 0) 
+		//Measure FPS
+		if (FPSmeasuring)
 		{
 			std::cout << frames << std::endl;
-			timer = 1;
 			frames = 0;
 		}
+		timer = 1;
+		resourseEnergy += baseEnergyIncome;
+		resourseMinerals += baseMineralsIncome;
+		if(researchWindow.selectedResearch != TechnologyID::none)
+			researchWindow.techTree.technologies[int(researchWindow.selectedResearch)].addPoints(baseResearchIncome);
 	}
 
+	
+
+	//move PopUpWindows
+	if (researchWindow.isGrabbed())
+	{
+		sf::Vector2f dpos = mousePosition - savedPressLeftClickLocation;
+		researchWindow.setPosition(researchWindow.getOriginalPosition() + dpos);
+	}
 	// Update Buildings
 	ProjectileID id_projectile;
 	ActionID id_action;
@@ -72,14 +88,14 @@ void Engine::update(float dtAsSeconds)
 					default:
 						break;
 					}
-					
+
 				}
 
 			}
 		}
 	}
 	//Update Projectiles
-	ProjectileContainer.updateProjectiles(dtAsSeconds , UnitContainer.enemyContainer.getClosestEnemy());
+	ProjectileContainer.updateProjectiles(dtAsSeconds, UnitContainer.enemyContainer.getClosestEnemy() + sf::Vector2f(10,TILESIZE/2));
 
 	if (spawnEnemies)
 	{
@@ -91,9 +107,9 @@ void Engine::update(float dtAsSeconds)
 	//Update Units and Enemies
 	UnitContainer.update(dtAsSeconds);
 	// Process fighter shooting
-	for (int i = 0; i < MAX_UNITS; i++) 
+	for (int i = 0; i < MAX_UNITS; i++)
 	{
-		if (UnitContainer.Units[i] != nullptr) 
+		if (UnitContainer.Units[i] != nullptr)
 		{
 			if (UnitContainer.Units[i]->isReadyToFire())
 			{
@@ -118,20 +134,20 @@ void Engine::update(float dtAsSeconds)
 				if (ProjectileContainer.projectiles[j] != nullptr)
 				{
 					// if Projectile.type is bullet
-					if (ProjectileContainer.projectiles[j]->type == ProjectileType::Bullet) 
+					if (ProjectileContainer.projectiles[j]->type == ProjectileType::Bullet)
 					{
 						// if They are on the same line
 						//if (ProjectileContainer.Projectiles[j].line == EnemyContainer.enemy[i].line) 
 						//{
-							if (ProjectileContainer.projectiles[j]->getBoundRect().intersects(UnitContainer.enemyContainer.enemy[i].getBoundRect()))
-							{
+						if (ProjectileContainer.projectiles[j]->getBoundRect().intersects(UnitContainer.enemyContainer.enemy[i].getBoundRect()))
+						{
 
-								UnitContainer.enemyContainer.enemy[i].recieveDamage(ProjectileContainer.projectiles[j]->damage);
-								ProjectileContainer.destroy(j);
-	
-							}
+							UnitContainer.enemyContainer.enemy[i].recieveDamage(ProjectileContainer.projectiles[j]->damage);
+							ProjectileContainer.destroy(j);
+
+						}
 						//}
-						
+
 					}
 					else
 						// if Projectile type is Rocket
@@ -142,7 +158,7 @@ void Engine::update(float dtAsSeconds)
 								UnitContainer.enemyContainer.enemy[i].recieveDamage(ProjectileContainer.projectiles[j]->damage);
 								ProjectileContainer.destroy(j);
 							}
-						}	
+						}
 				}
 			}
 		}
@@ -150,7 +166,7 @@ void Engine::update(float dtAsSeconds)
 	// Check Laser hits
 	for (int i = 0; i < MAX_PROJECTILES; i++)
 	{
-		if (ProjectileContainer.projectiles[i] != nullptr) 
+		if (ProjectileContainer.projectiles[i] != nullptr)
 		{
 			if (ProjectileContainer.projectiles[i]->type == ProjectileType::Laser)
 			{
