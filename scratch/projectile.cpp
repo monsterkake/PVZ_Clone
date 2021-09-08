@@ -73,28 +73,17 @@ void Bullet::update(float dtAsSeconds, sf::Vector2f target)
 void Rocket::update(float dtAsSeconds, sf::Vector2f target)
 {
 	updateAnimation(dtAsSeconds);
-	//float verticalOffset = TILESIZE / 2;
-	float cos_ ;
-
-		cos_ = cosf((target.y  - position.y) /
+	float cos_;
+	cos_ = cosf((target.y  - position.y) /
 		(sqrt(
 			pow(
 				target.x - position.x, 2)
 			+ pow(
 				target.y  - position.y, 2))));
-
-
-
-	std::cout << acosf(cos_) << std::endl;
 	
 	angle = acosf(cos_) * 100;
 
-	float dx = speed * cosf((target.y - position.y) /
-		(sqrt(
-			pow(
-				target.x - position.x, 2)
-			+ pow(
-				target.y - position.y, 2))));
+	float dx = speed * cos_;
 
 	float dy = sqrt(pow(speed, 2) - pow(dx, 2));
 

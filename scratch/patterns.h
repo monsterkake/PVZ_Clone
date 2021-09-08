@@ -54,6 +54,18 @@ public:
 		boundRect = rect;
 		move(sf::Vector2f(0,0));
 	}
+	bool isClicked(sf::Vector2f mpos) 
+	{
+		if (boundRect.contains(mpos))
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+		
+	};
 };
 
 class HasAnAnimation : public HasACollision

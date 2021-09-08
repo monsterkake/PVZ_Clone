@@ -5,13 +5,16 @@
 
 class Technology 
 {
-//protected:
 public:
 	float progress = 0;
 	float totalProgressNeeded = 100;
 	bool researchStatus = false;
 	TechnologyID id;
-//public:
+	std::string description;
+	Technology() 
+	{
+		description = "defaultDescription";
+	}
 	TechnologyID getId()
 	{
 		return id;
@@ -26,14 +29,27 @@ public:
 	}
 	void addPoints(int points) 
 	{
-		if (progress >= totalProgressNeeded) 
-		{
-			researchStatus = true;
-		}
-		else
+		if(progress < totalProgressNeeded)
 		{
 			progress += points;
 		}
+		if (progress >= totalProgressNeeded)
+		{
+			progress = totalProgressNeeded;
+			researchStatus = true;
+		}
+	}
+	void setDescription(std::string description)
+	{
+		this->description = description;
+	}
+	std::string getDescription() 
+	{
+		return this->description;
+	}
+	float getProgressPercentage() 
+	{
+		return progress / totalProgressNeeded;
 	}
 };
 

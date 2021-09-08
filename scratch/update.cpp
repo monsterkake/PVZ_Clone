@@ -38,8 +38,8 @@ void Engine::update(float dtAsSeconds)
 		timer = 1;
 		resourseEnergy += baseEnergyIncome;
 		resourseMinerals += baseMineralsIncome;
-		if(researchWindow.selectedResearch != TechnologyID::none)
-			researchWindow.techTree.technologies[int(researchWindow.selectedResearch)].addPoints(baseResearchIncome);
+		if(researchWindow.getCurrentResearch() != TechnologyID::none)
+			researchWindow.techTree.technologies[int(researchWindow.getCurrentResearch())].addPoints(baseResearchIncome);
 	}
 
 	
@@ -57,7 +57,7 @@ void Engine::update(float dtAsSeconds)
 	{
 		for (int j = 0; j < TILES_IN_A_LINE; j++)
 		{
-			// if building exists
+			// if building existsss
 			if (tileMap.lines[i].tiles[j].building != nullptr)
 			{
 

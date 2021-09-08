@@ -14,7 +14,7 @@ void Engine::draw()
 	}
 	
 	
-	// Стираем предыдущий кадр
+	// Clear Window
 	m_Window.clear(Color::White);
 	renderTexture.clear();
 	//Draw TextureBackGround
@@ -25,14 +25,9 @@ void Engine::draw()
 	{
 		for (int j = 0; j < TILES_IN_A_LINE; j++)
 		{
-			//ResourseContainer.greenRect.setPosition(tileMap.lines[i].tiles[j].getPosition());
-
-			//renderTexture.draw(ResourseContainer.greenRect);
 			//Draw Buildings
 			if (tileMap.lines[i].tiles[j].building != nullptr)
 			{
-				//ResourseContainer.blueRect.setPosition(tileMap.lines[i].tiles[j].building->getPosition());
-				//renderTexture.draw(ResourseContainer.blueRect);
 				switch (tileMap.lines[i].tiles[j].building->id)
 				{
 				case BuildingID::Turret1:
@@ -54,6 +49,16 @@ void Engine::draw()
 					ResourseContainer.AnimationLaserTurret.setTextureRect(tileMap.lines[i].tiles[j].building->getFrame());
 					ResourseContainer.AnimationLaserTurret.setPosition(tileMap.lines[i].tiles[j].building->getPosition());
 					renderTexture.draw(ResourseContainer.AnimationLaserTurret);
+					break;
+				case BuildingID::EnergyGenerator:
+					ResourseContainer.AnimationEnergyGenerator.setTextureRect(tileMap.lines[i].tiles[j].building->getFrame());
+					ResourseContainer.AnimationEnergyGenerator.setPosition(tileMap.lines[i].tiles[j].building->getPosition());
+					renderTexture.draw(ResourseContainer.AnimationEnergyGenerator);
+					break;
+				case BuildingID::MineralsGenerator:
+					ResourseContainer.AnimationMineralsGenerator.setTextureRect(tileMap.lines[i].tiles[j].building->getFrame());
+					ResourseContainer.AnimationMineralsGenerator.setPosition(tileMap.lines[i].tiles[j].building->getPosition());
+					renderTexture.draw(ResourseContainer.AnimationMineralsGenerator);
 					break;
 				default:
 					break;
@@ -107,14 +112,11 @@ void Engine::draw()
 			switch (ProjectileContainer.projectiles[i]->id)
 			{
 			case ProjectileID::Bullet1:
-				ResourseContainer.redRect.setColor(sf::Color(255,255,255,255));
-				ResourseContainer.redRect.setPosition(ProjectileContainer.projectiles[i]->getPosition());
-				renderTexture.draw(ResourseContainer.redRect);
+				ResourseContainer.AnimationBullet.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+				ResourseContainer.AnimationBullet.setTextureRect(ProjectileContainer.projectiles[i]->getFrame());
+				renderTexture.draw(ResourseContainer.AnimationBullet);
 				break;
 			case ProjectileID::Rocket1:
-				//ResourseContainer.redRect.setColor(sf::Color(150, 255, 10, 255));
-				//ResourseContainer.redRect.setPosition(ProjectileContainer.projectiles[i]->getPosition());
-				//renderTexture.draw(ResourseContainer.redRect);
 				ResourseContainer.AnimationRocket.setPosition(ProjectileContainer.projectiles[i]->getPosition());
 				ResourseContainer.AnimationRocket.setTextureRect(ProjectileContainer.projectiles[i]->getFrame());
 				ResourseContainer.AnimationRocket.setOrigin(SPRITE_SIZE/2, SPRITE_SIZE / 2);
@@ -190,7 +192,7 @@ void Engine::draw()
 	}
 	//Draw Units
 	 for (int i = 0; i < MAX_UNITS; i++)
-	{
+	 {
 		if (UnitContainer.Units[i] != nullptr)
 		{
 
@@ -201,7 +203,6 @@ void Engine::draw()
 				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
 				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
 				renderTexture.draw(ResourseContainer.AnimationTest);
-
 				break;
 			case UnitID::e1:
 				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());

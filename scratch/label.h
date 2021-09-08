@@ -32,6 +32,7 @@ public:
 	void setStringBase(std::string string)
 	{
 		this->stringBase = string;
+		text->setString(stringBase);
 	}
 	std::string getStringBase()
 	{

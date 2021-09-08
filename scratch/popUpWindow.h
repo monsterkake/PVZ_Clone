@@ -24,10 +24,9 @@ public:
 		m_isGrabbed = std::shared_ptr<bool>(new bool);
 		*m_isGrabbed = false;
 		//collision configure
-		
-		size = sf::Vector2f(1000, 500);
-		boundRect.height = size.y;
-		boundRect.width = size.x;
+		setSize(sf::Vector2f(TECH_POPUPWINDOW_SIZE_X, TECH_POPUPWINDOW_SIZE_Y));
+		//boundRect.height = size.y;
+		//boundRect.width = size.x;
 		//render texture configure
 		popUpWindowBase.loadFromFile("resourses/sprites/PopUpWindowBase.png");
 		popUpWindowBaseSprite.setTexture(popUpWindowBase);
@@ -58,6 +57,9 @@ public:
 	void setSize(sf::Vector2f size)
 	{
 		this->size = size;
+
+		boundRect.height = this->size.y;
+		boundRect.width = this->size.x;
 	}
 	sf::Vector2f getSize() 
 	{

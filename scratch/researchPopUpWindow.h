@@ -3,6 +3,9 @@
 #include "techTree.h"
 #include "label.h"
 
+#define DESCRIPTION_SIZE_X 0.2
+#define DESCRIPTION_SIZE_Y 1
+
 class ResearchPopUpWindow : public PopUpWindow
 {
 	sf::Texture buttonBase;
@@ -10,18 +13,34 @@ class ResearchPopUpWindow : public PopUpWindow
 	sf::Sprite buttonBaseSprite;
 	sf::Sprite closeButtonBaseSprite;
 
+	sf::Texture TextureDescriptionBase;
+	sf::Sprite descriptionBase;
+
+	sf::RectangleShape progressRectangle;
+
+	std::shared_ptr<TechnologyID> currentResearch;
+	//TechnologyID selectedResearch = TechnologyID::none;
+	TechnologyID targetedResearch = TechnologyID::none;
+
 public:
-	TechnologyID selectedResearch = TechnologyID::none;
+	
+
 	TechnologyTree techTree;
 
 	Button closeButton;
 
 	Button technologyButtons[TECHNOLOGY_TREE_LENGTH];
 
+	Button selectResearchButton;
+
 	Label progressBar;
 
+	Label techDescription;
 	ResearchPopUpWindow()
 	{
+		// initialize current research
+		currentResearch = std::shared_ptr<TechnologyID>(new TechnologyID);
+		*currentResearch = TechnologyID::none;
 		//Textures to sprites
 		closeButtonBase.loadFromFile("resourses/sprites/closeButtonBase.png");
 		closeButtonBaseSprite.setTexture(closeButtonBase);
@@ -31,6 +50,12 @@ public:
 		buttonBaseSprite.setTexture(buttonBase);
 		buttonBaseSprite.setScale(1, 0.5);
 
+		TextureDescriptionBase.loadFromFile("resourses/sprites/PopUpWindowBase.png");
+		descriptionBase.setTexture(TextureDescriptionBase);
+		descriptionBase.setScale(popUpWindowBaseSprite.getScale().x * DESCRIPTION_SIZE_X, popUpWindowBaseSprite.getScale().y * DESCRIPTION_SIZE_Y);
+		//rectangle for progress configure
+		progressRectangle.setFillColor(sf::Color(0,255,0,100));
+		progressRectangle.setSize(sf::Vector2f(100,50));
 		//what am i doing with my life?
 		m_isGrabbed = std::shared_ptr<bool>(new bool);
 		*m_isGrabbed = false;
@@ -58,6 +83,12 @@ public:
 		closeButton.setPosition(sf::Vector2f(this->getPosition().x + size.x - SPRITE_SIZE / 5, this->getPosition().y));
 		closeButton.setOffset();
 
+		selectResearchButton.setBoundRect(sf::FloatRect(0, 0, 100, 50));
+		selectResearchButton.setPosition(sf::Vector2f(50, size.y - buttonBaseSprite.getScale().y * SPRITE_SIZE - 20));
+		selectResearchButton.setText("select");
+		selectResearchButton.setOffset();
+		
+
 		for (int i = 0; i < TECHNOLOGY_TREE_LENGTH; i++)
 		{
 			technologyButtons[i].setBoundRect(sf::FloatRect(0,0,100,50));
@@ -67,34 +98,24 @@ public:
 		technologyButtons[int(TechnologyID::Stones)].setText("Stones");
 		technologyButtons[int(TechnologyID::SticksAndStones)].setText("SticksAndStones");
 
-		technologyButtons[int(TechnologyID::Sticks)].setPosition(sf::Vector2f(100,100));
-		technologyButtons[int(TechnologyID::Stones)].setPosition(sf::Vector2f(100, 200));
-		technologyButtons[int(TechnologyID::SticksAndStones)].setPosition(sf::Vector2f(300, 150));
+		technologyButtons[int(TechnologyID::Sticks)].setPosition(sf::Vector2f(300,100));
+		technologyButtons[int(TechnologyID::Stones)].setPosition(sf::Vector2f(300, 200));
+		technologyButtons[int(TechnologyID::SticksAndStones)].setPosition(sf::Vector2f(500, 150));
 
 		technologyButtons[int(TechnologyID::Sticks)].setOffset();
 		technologyButtons[int(TechnologyID::Stones)].setOffset();
 		technologyButtons[int(TechnologyID::SticksAndStones)].setOffset();
 
-		progressBar.setPosition(sf::Vector2f(50, 440));
+		progressBar.setPosition(sf::Vector2f(10, 400));
 		progressBar.setStringBase("progress");
 		progressBar.setOffset();
 
-		//Draw widgets
-		//Draw close Button
-		
-		closeButtonBaseSprite.setPosition(closeButton.getPosition());
-		m_renderTexture.draw(closeButtonBaseSprite);
-		//draw technology buttons
-		for (int i = 0; i < TECHNOLOGY_TREE_LENGTH; i++)
-		{
-			buttonBaseSprite.setPosition(technologyButtons[i].getPosition());
-			technologyButtons[i].getText().setPosition(technologyButtons[i].getPosition() - this->getPosition());
-			m_renderTexture.draw(buttonBaseSprite);
-			m_renderTexture.draw(technologyButtons[i].getText());
-		}
+		techDescription.setPosition(sf::Vector2f(10, 30));
+		techDescription.setStringBase("Description:");
+		techDescription.setOffset();
 
-		//draw progress bar
-		m_renderTexture.draw(progressBar.getText());
+		//Draw 
+		updateSprite();
 		//test
 
 		//update Sprite
@@ -107,7 +128,7 @@ public:
 		m_renderTexture.clear(sf::Color(0,0,0,0));
 		//m_sprite->setPosition(0,0);
 		m_renderTexture.draw(popUpWindowBaseSprite);
-		m_renderTexture.draw(name.getText());
+		
 		closeButtonBaseSprite.setPosition(closeButton.getPosition() - this->getPosition());
 		m_renderTexture.draw(closeButtonBaseSprite);
 		//draw technology buttons
@@ -115,9 +136,9 @@ public:
 		for (int i = 0; i < TECHNOLOGY_TREE_LENGTH; i++)
 		{
 			
-			if (int(selectedResearch) == i) 
+			if (int(targetedResearch) == i) 
 			{
-				buttonBaseSprite.setColor(sf::Color(0, 255, 255,255));
+				buttonBaseSprite.setColor(sf::Color(0, 200, 255,255));
 			}
 			else
 			{
@@ -127,20 +148,40 @@ public:
 			buttonBaseSprite.setPosition(technologyButtons[i].getPosition() - this->getPosition());
 			m_renderTexture.draw(buttonBaseSprite);
 			technologyButtons[i].getText().setPosition(technologyButtons[i].getPosition() - this->getPosition());
+
+			progressRectangle.setPosition(technologyButtons[i].getPosition() - this->getPosition());
+			progressRectangle.setSize(sf::Vector2f(100 * techTree.technologies[i].getProgressPercentage(), 50));
 			m_renderTexture.draw(technologyButtons[i].getText());
+
+			m_renderTexture.draw(progressRectangle);
 			
 		}
 		buttonBaseSprite.setColor(savedColor);
-		//draw progress bar
+		//draw info panel
 		
-		progressBar.setText(std::to_string(techTree.technologies[int(selectedResearch)].progress));
-		m_renderTexture.draw(progressBar.getText());
-		//test
+		m_renderTexture.draw(descriptionBase);
 
+		buttonBaseSprite.setPosition(selectResearchButton.getPosition() - this->getPosition());
+		m_renderTexture.draw(buttonBaseSprite);
+		selectResearchButton.getText().setPosition(selectResearchButton.getPosition() - this->getPosition());
+		m_renderTexture.draw(selectResearchButton.getText());
+
+		//draw progress bar
+		progressBar.setText(std::to_string(int(techTree.technologies[int(targetedResearch)].getProgressPercentage() * 100)) + "%");
+		m_renderTexture.draw(progressBar.getText());
+		//draw tech description
+		if (int(targetedResearch) < TECHNOLOGY_TREE_LENGTH) 
+		{
+			techDescription.setText(techTree.technologies[int(targetedResearch)].description);
+			m_renderTexture.draw(techDescription.getText());
+		}
+		
+		//test
+		//draw window name
+		m_renderTexture.draw(name.getText());
 		//update Sprite
 		m_renderTexture.display();
 		m_sprite->setTexture(m_renderTexture.getTexture());
-		//m_sprite->setPosition(this->getPosition());
 	}
 
 	void setPosition(sf::Vector2f position) override
@@ -150,24 +191,30 @@ public:
 		boundRect.left = position.x;
 		boundRect.top = position.y;
 		closeButton.setPosition(this->getPosition());
+		selectResearchButton.setPosition(this->getPosition());
 		technologyButtons[int(TechnologyID::Sticks)].setPosition(this->getPosition() );
 		technologyButtons[int(TechnologyID::Stones)].setPosition(this->getPosition() );
 		technologyButtons[int(TechnologyID::SticksAndStones)].setPosition(this->getPosition() );
-	}
-	void move(sf::Vector2f position) override
-	{
-		this->position += position;
-		m_sprite->setPosition(this->position);
-		boundRect.left += position.x;
-		boundRect.top += position.y;
-		closeButton.setPosition(sf::Vector2f(this->getPosition().x + size.x - SPRITE_SIZE / 5, this->getPosition().y));
-		technologyButtons[int(TechnologyID::Sticks)].setPosition(this->getPosition() + sf::Vector2f(100, 100));
-		technologyButtons[int(TechnologyID::Stones)].setPosition(this->getPosition() + sf::Vector2f(100, 200));
-		technologyButtons[int(TechnologyID::SticksAndStones)].setPosition(this->getPosition() + sf::Vector2f(300, 150));
+		
 	}
 
-	void setResearch(TechnologyID research)
+	void setResearchToTargeted()
 	{
-		selectedResearch = research;
+		if (techTree.requirementsIsReached(targetedResearch))
+		{
+			*currentResearch = targetedResearch;
+		}
+	}
+	void setTargetedResearch(TechnologyID research)
+	{
+		targetedResearch = research;
+	}
+	TechnologyID getTargetedResearch() 
+	{
+		return targetedResearch;
+	}
+	TechnologyID getCurrentResearch() 
+	{
+		return *currentResearch;
 	}
 };

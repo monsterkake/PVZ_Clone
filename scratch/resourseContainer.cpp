@@ -56,22 +56,30 @@ ResourseContainer::ResourseContainer()
 	TextureAnimationLaserTurret.loadFromFile("resourses/animations/buildings/animationLaserTurret.png");
 	TextureAnimationRocketlauncher.loadFromFile("resourses/animations/buildings/animationRocketLauncher.png");
 	TextureAnimationTurret.loadFromFile("resourses/animations/buildings/animationTurret.png");
-	
+	TextureAnimationEnergyGenerator.loadFromFile("resourses/animations/buildings/animationEnergyGenerator.png");
+	TextureAnimationMineralsGenerator.loadFromFile("resourses/animations/buildings/animationMineralsGenerator.png");
+
 	AnimationTurret.setTexture(TextureAnimationTurret);
 	AnimationLaserTurret.setTexture(TextureAnimationLaserTurret);
 	AnimationRocketlauncher.setTexture(TextureAnimationRocketlauncher);
 	AnimationHangarBay.setTexture(TextureAnimationHangarBay);
+	AnimationEnergyGenerator.setTexture(TextureAnimationEnergyGenerator);
+	AnimationMineralsGenerator.setTexture(TextureAnimationMineralsGenerator);
 
 	AnimationTurret.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
 	AnimationLaserTurret.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
 	AnimationRocketlauncher.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
 	AnimationHangarBay.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationEnergyGenerator.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationMineralsGenerator.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
 	//Projectiles
 	TextureLaserBodyAnimation.loadFromFile("resourses/animations/projectiles/animationLaserBody.png");
 	TextureAnimationRocket.loadFromFile("resourses/animations/projectiles/animationRocket.png");
+	TextureAnimationBullet.loadFromFile("resourses/animations/projectiles/animationBullet.png");
 
 	LaserBodyAnimation.setTexture(TextureLaserBodyAnimation);
 	AnimationRocket.setTexture(TextureAnimationRocket);
+	AnimationBullet.setTexture(TextureAnimationBullet);
 
 	//AnimationRocket.setScale((float)PROJECTILE_SIZE / (float)SPRITE_SIZE, (float)PROJECTILE_SIZE / (float)SPRITE_SIZE);
 }

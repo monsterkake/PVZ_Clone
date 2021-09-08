@@ -12,6 +12,11 @@ public:
 		technologies[int(TechnologyID::Stones)].setId(TechnologyID::Stones);
 		technologies[int(TechnologyID::SticksAndStones)].setId(TechnologyID::SticksAndStones);
 		//std::cout << requirementsIsReached(TechnologyID::SticksAndStones) << std::endl;
+
+		std::string tempDescription;
+
+		tempDescription = "Sticks, and that's\npretty much it";
+		technologies[int(TechnologyID::Sticks)].setDescription(tempDescription);
 	}
 	bool requirementsIsReached(TechnologyID id)
 	{
