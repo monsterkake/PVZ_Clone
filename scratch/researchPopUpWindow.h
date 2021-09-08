@@ -6,7 +6,7 @@
 #define DESCRIPTION_SIZE_X 0.2
 #define DESCRIPTION_SIZE_Y 1
 
-class ResearchPopUpWindow : public PopUpWindow
+class ResearchPopUpWindow : public PopUpWindow, public HasACooldown
 {
 	sf::Texture buttonBase;
 	sf::Texture closeButtonBase;
@@ -21,7 +21,9 @@ class ResearchPopUpWindow : public PopUpWindow
 	std::shared_ptr<TechnologyID> currentResearch;
 	//TechnologyID selectedResearch = TechnologyID::none;
 	TechnologyID targetedResearch = TechnologyID::none;
-
+	sf::Color clickedColor = sf::Color(50, 200, 50, 255);
+	sf::Color hoveredColor = sf::Color(200, 200, 200, 255);
+	sf::Color notHoveredColor = sf::Color(150, 150, 150, 255);
 public:
 	
 
@@ -115,7 +117,7 @@ public:
 		techDescription.setOffset();
 
 		//Draw 
-		updateSprite();
+		updateSprite(sf::Vector2f(0,0));
 		//test
 
 		//update Sprite
@@ -123,28 +125,62 @@ public:
 		m_sprite->setTexture(m_renderTexture.getTexture());
 	}
 
-	void updateSprite() 
+	void update(sf::Vector2f mpos, float researchIncome, float dtAsSeconds)
+	{
+		//update research
+		if (getCurrentResearch() != TechnologyID::none)
+			if(cooldownIsReady(dtAsSeconds))
+				techTree.technologies[int(getCurrentResearch())].addPoints(researchIncome);
+	}
+
+	//void updateWidgets(sf::Vector2f mpos) 
+	//{
+	//	for (int i = 0; i < TECHNOLOGY_TREE_LENGTH; i++)
+	//	{
+	//		if()
+	//		technologyButtons[i].getText().setPosition(technologyButtons[i].getPosition() - this->getPosition());
+
+
+	//	}
+	//}
+
+	void updateSprite(sf::Vector2f mpos)
 	{
 		m_renderTexture.clear(sf::Color(0,0,0,0));
 		//m_sprite->setPosition(0,0);
 		m_renderTexture.draw(popUpWindowBaseSprite);
-		
+
+		if (closeButton.isHovered(mpos))
+		{
+			closeButtonBaseSprite.setColor(hoveredColor);
+			
+		}
+		else
+		{
+			closeButtonBaseSprite.setColor(notHoveredColor);
+		}
 		closeButtonBaseSprite.setPosition(closeButton.getPosition() - this->getPosition());
 		m_renderTexture.draw(closeButtonBaseSprite);
 		//draw technology buttons
-		sf::Color savedColor = buttonBaseSprite.getColor();
+		//savedColor = buttonBaseSprite.getColor();
 		for (int i = 0; i < TECHNOLOGY_TREE_LENGTH; i++)
 		{
+			if (technologyButtons[i].isHovered(mpos)) 
+			{
+				buttonBaseSprite.setColor(hoveredColor);
+			}
+			else 
+			{
+				if (int(targetedResearch) == i)
+				{
+					buttonBaseSprite.setColor(clickedColor);
+				}
+				else
+				{
+					buttonBaseSprite.setColor(notHoveredColor);
+				}
+			}
 			
-			if (int(targetedResearch) == i) 
-			{
-				buttonBaseSprite.setColor(sf::Color(0, 200, 255,255));
-			}
-			else
-			{
-				buttonBaseSprite.setColor(savedColor);
-				
-			}
 			buttonBaseSprite.setPosition(technologyButtons[i].getPosition() - this->getPosition());
 			m_renderTexture.draw(buttonBaseSprite);
 			technologyButtons[i].getText().setPosition(technologyButtons[i].getPosition() - this->getPosition());
@@ -156,11 +192,19 @@ public:
 			m_renderTexture.draw(progressRectangle);
 			
 		}
-		buttonBaseSprite.setColor(savedColor);
+
 		//draw info panel
 		
 		m_renderTexture.draw(descriptionBase);
 
+		if (selectResearchButton.isHovered(mpos))
+		{
+			buttonBaseSprite.setColor(hoveredColor);
+		}
+		else
+		{
+			buttonBaseSprite.setColor(notHoveredColor);
+		}
 		buttonBaseSprite.setPosition(selectResearchButton.getPosition() - this->getPosition());
 		m_renderTexture.draw(buttonBaseSprite);
 		selectResearchButton.getText().setPosition(selectResearchButton.getPosition() - this->getPosition());

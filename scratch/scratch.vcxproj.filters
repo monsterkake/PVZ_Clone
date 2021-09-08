@@ -41,9 +41,6 @@
     <ClCompile Include="tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gameinterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="resourseContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

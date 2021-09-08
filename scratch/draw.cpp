@@ -70,39 +70,41 @@ void Engine::draw()
 
 	//Draw Interface
 	//Draw Building Buttons
-	ResourseContainer.buttonBaseSprite.setScale(0.5, 0.5);
-	for (int i = 0; i < AMOUNT_OF_BUILDING_BUTTONS; i++)
-	{
-		ResourseContainer.buttonBaseSprite.setPosition(gameInterface.BuildingButtons[i].getPosition());
-		renderTexture.draw(ResourseContainer.buttonBaseSprite);
-		renderTexture.draw(gameInterface.BuildingButtons[i].getText());
-	}
-	//Draw economy Buttons
-	for (int i = 0; i < AMOUNT_OF_ECONOMY_BUTTONS; i++)
-	{
-		ResourseContainer.buttonBaseSprite.setPosition(gameInterface.economyButtons[i].getPosition());
-		renderTexture.draw(ResourseContainer.buttonBaseSprite);
-		renderTexture.draw(gameInterface.economyButtons[i].getText());
-	}
+	gameInterface.updateSprite(mousePosition,resourseEnergy,resourseMinerals);
+	renderTexture.draw(gameInterface.getSprite());
+	//ResourseContainer.buttonBaseSprite.setScale(0.5, 0.5);
+	//for (int i = 0; i < AMOUNT_OF_BUILDING_BUTTONS; i++)
+	//{
+	//	ResourseContainer.buttonBaseSprite.setPosition(gameInterface.BuildingButtons[i].getPosition());
+	//	renderTexture.draw(ResourseContainer.buttonBaseSprite);
+	//	renderTexture.draw(gameInterface.BuildingButtons[i].getText());
+	//}
+	////Draw economy Buttons
+	//for (int i = 0; i < AMOUNT_OF_ECONOMY_BUTTONS; i++)
+	//{
+	//	ResourseContainer.buttonBaseSprite.setPosition(gameInterface.economyButtons[i].getPosition());
+	//	renderTexture.draw(ResourseContainer.buttonBaseSprite);
+	//	renderTexture.draw(gameInterface.economyButtons[i].getText());
+	//}
 
-	//Draw destroy button
-	ResourseContainer.buttonBaseSprite.setPosition(gameInterface.destroyButton.getPosition());
-	renderTexture.draw(ResourseContainer.buttonBaseSprite);
-	renderTexture.draw(gameInterface.destroyButton.getText());
+	////Draw destroy button
+	//ResourseContainer.buttonBaseSprite.setPosition(gameInterface.destroyButton.getPosition());
+	//renderTexture.draw(ResourseContainer.buttonBaseSprite);
+	//renderTexture.draw(gameInterface.destroyButton.getText());
 
-	//Draw research button
-	ResourseContainer.buttonBaseSprite.setPosition(gameInterface.researchButton.getPosition());
-	renderTexture.draw(ResourseContainer.buttonBaseSprite);
-	renderTexture.draw(gameInterface.researchButton.getText());
+	////Draw research button
+	//ResourseContainer.buttonBaseSprite.setPosition(gameInterface.researchButton.getPosition());
+	//renderTexture.draw(ResourseContainer.buttonBaseSprite);
+	//renderTexture.draw(gameInterface.researchButton.getText());
 
-	//return sprite scale to normal
-	ResourseContainer.buttonBaseSprite.setScale(1, 1);
+	////return sprite scale to normal
+	//ResourseContainer.buttonBaseSprite.setScale(1, 1);
 
-	//Draw labels
-	gameInterface.energyLabel.setText(std::string(": " + std::to_string(resourseEnergy)));
-	renderTexture.draw(gameInterface.energyLabel.getText());
-	gameInterface.mineralsLabel.setText(std::string(": " + std::to_string(resourseMinerals)));
-	renderTexture.draw(gameInterface.mineralsLabel.getText());
+	////Draw labels
+	//gameInterface.energyLabel.setText(std::string(": " + std::to_string(resourseEnergy)));
+	//renderTexture.draw(gameInterface.energyLabel.getText());
+	//gameInterface.mineralsLabel.setText(std::string(": " + std::to_string(resourseMinerals)));
+	//renderTexture.draw(gameInterface.mineralsLabel.getText());
 
 	//Draw Projectiles
 	for (int i = 0; i < MAX_PROJECTILES; i++)
@@ -229,7 +231,8 @@ void Engine::draw()
 	 //Draw research window
 	 if (showResearchWindow) 
 	 {
-		 researchWindow.updateSprite();
+		 //researchWindow.updateWidgets(mousePosition);
+		 researchWindow.updateSprite(mousePosition);
 		 renderTexture.draw(researchWindow.getSprite());
 	 }
 

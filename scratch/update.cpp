@@ -38,8 +38,7 @@ void Engine::update(float dtAsSeconds)
 		timer = 1;
 		resourseEnergy += baseEnergyIncome;
 		resourseMinerals += baseMineralsIncome;
-		if(researchWindow.getCurrentResearch() != TechnologyID::none)
-			researchWindow.techTree.technologies[int(researchWindow.getCurrentResearch())].addPoints(baseResearchIncome);
+		
 	}
 
 	
@@ -50,6 +49,8 @@ void Engine::update(float dtAsSeconds)
 		sf::Vector2f dpos = mousePosition - savedPressLeftClickLocation;
 		researchWindow.setPosition(researchWindow.getOriginalPosition() + dpos);
 	}
+	//Update PopUpWindows
+	researchWindow.update(mousePosition, baseResearchIncome, dtAsSeconds);
 	// Update Buildings
 	ProjectileID id_projectile;
 	ActionID id_action;

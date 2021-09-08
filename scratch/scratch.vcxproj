@@ -146,7 +146,6 @@
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="input.cpp" />
-    <ClCompile Include="gameinterface.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="projectile.cpp" />
     <ClCompile Include="resourseContainer.cpp" />
