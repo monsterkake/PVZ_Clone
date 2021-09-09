@@ -17,7 +17,7 @@ public:
 			Units[i] = nullptr;
 		}
 	}
-	void addNew(UnitID id, sf::Vector2f position)
+	void addNew(UnitID id, sf::Vector2f position, sf::Vector2i parentIndex)
 	{
 		for (int i = 0; i < MAX_UNITS; i++)
 		{
@@ -35,11 +35,17 @@ public:
 
 				Units[i]->id = id;
 				Units[i]->setPosition(position);
+				Units[i]->parentIndex = parentIndex;
 				return;
 				
 			}
 		}
 	}
+	void destroy(int index)
+	{
+		Units[index] = nullptr;
+	}
+
 	void update(float dtAsSeconds) 
 	{
 		for (int i = 0; i < MAX_UNITS; i++)

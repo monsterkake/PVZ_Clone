@@ -75,7 +75,7 @@ void Engine::update(float dtAsSeconds)
 						ProjectileContainer.addNew(ProjectileID::Rocket1, tileMap.lines[i].tiles[j].building->getPosition(), i); /* i - current line*/
 						break;
 					case ActionID::ReleaseFighter:
-						UnitContainer.addNew(UnitID::Fighter1, tileMap.lines[i].tiles[j].building->getPosition());
+						UnitContainer.addNew(UnitID::Fighter1, tileMap.lines[i].tiles[j].building->getPosition(), sf::Vector2i(i,j));
 						break;
 					case ActionID::ShootLaser:
 						ProjectileContainer.addNew(ProjectileID::Laser1, tileMap.lines[i].tiles[j].building->getPosition(), i); /* i - current line*/

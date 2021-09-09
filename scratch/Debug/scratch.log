@@ -1,45 +1,45 @@
-﻿  draw.cpp
-D:\docs\githubRepo\scratch\scratch\patterns.h(180,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+﻿  input.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(182,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\patterns.h(181,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\patterns.h(183,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\patterns.h(183,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+D:\docs\githubRepo\scratch\scratch\patterns.h(185,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\patterns.h(183,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+D:\docs\githubRepo\scratch\scratch\patterns.h(185,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\tileMap.h(29,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\tileMap.h(29,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\tileMap.h(31,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\tileMap.h(31,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\tileMap.h(32,107): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,107): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -48,7 +48,7 @@ D:\docs\githubRepo\scratch\scratch\tileMap.h(32,107): warning C4244: 'argument':
           [
               T=int
           ]
-D:\docs\githubRepo\scratch\scratch\tileMap.h(32,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
           with
           [
               T=float
@@ -61,6 +61,26 @@ D:\docs\githubRepo\scratch\scratch\projectile.h(59,1): warning C4305: '=': trunc
 D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(49,1): warning C4305: 'argument': truncation from 'double' to 'float'
 D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(57,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(133,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\docs\githubRepo\scratch\scratch\draw.cpp(73,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\docs\githubRepo\scratch\scratch\draw.cpp(73,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  tile.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(182,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(183,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(185,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(185,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
   scratch.vcxproj -> D:\docs\githubRepo\scratch\Debug\scratch.exe

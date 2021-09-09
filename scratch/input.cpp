@@ -170,13 +170,8 @@ void Engine::input()
 						{
 							if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mousePosition)))
 							{
-								//if (resourseEnergy >= int(SelectedBuilding))
-								//{
-
-								//	resourseEnergy -= int(SelectedBuilding);
-
 								tileMap.lines[i].tiles[j].placeBuilding(SelectedBuilding);
-								//}
+
 
 								if (!isShiftButtonPressed)
 								{
@@ -188,7 +183,8 @@ void Engine::input()
 						}
 					}
 				}
-				else
+				else 
+				{
 					//Destory mode
 					if (MouseState == MouseStates::destroy)
 					{
@@ -196,13 +192,39 @@ void Engine::input()
 						{
 							for (int j = 0; j < TILES_IN_A_LINE; j++)
 							{
-								if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mousePosition)))
+								if (tileMap.lines[i].tiles[j].building != nullptr)
 								{
-									tileMap.lines[i].tiles[j].removeBuilding();
+									if (tileMap.lines[i].tiles[j].rec.contains(sf::Vector2i(mousePosition)))
+									{
+
+										// if a buildong has a child then remove the child
+										// else just remove building
+										if (tileMap.lines[i].tiles[j].building->hasAChild)
+										{
+											tileMap.lines[i].tiles[j].removeBuilding();
+											for (int k = 0; k < MAX_UNITS; k++)
+											{
+												if (UnitContainer.Units[k] != nullptr)
+												{
+													if (sf::Vector2i(i, j) == UnitContainer.Units[k]->parentIndex)
+													{
+														UnitContainer.destroy(k);
+														return;
+													}
+												}
+											}
+										}
+										else
+										{
+											tileMap.lines[i].tiles[j].removeBuilding();
+											return;
+										}
+									}
 								}
 							}
 						}
 					}
+				}	
 			}
 			else
 				// If right button pressed

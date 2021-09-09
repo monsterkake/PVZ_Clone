@@ -10,6 +10,7 @@
 class Building : public HasAnAnimation, public HasACooldown
 {
 public:
+    bool hasAChild = false;
     BuildingType type = BuildingType::none;
     Building();
     BuildingID id = BuildingID::none;
@@ -42,6 +43,7 @@ class HangarBay : public Building
 public:
     HangarBay()
     {
+        hasAChild = true;
         actionSpeed = 1.0;
     }
     bool FighterIsNotReleased = true;

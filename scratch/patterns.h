@@ -127,12 +127,14 @@ protected:
 class Unit : public HasAnAnimation, public HasACooldown
 {
 protected:
+	
 	float speed;
 	float hp;
 	bool ReadyToFire = false;
 public:
 	UnitID id;
 	UnitType type;
+	sf::Vector2i parentIndex;
 
 	virtual void update(float dtAsSeconds, sf::Vector2f target) = 0;
 

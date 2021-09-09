@@ -6,6 +6,7 @@
 class Fighter : public Unit
 {
 public:
+	
 	void update(float dtAsSeconds, sf::Vector2f target) override;
 	Fighter()
 	{

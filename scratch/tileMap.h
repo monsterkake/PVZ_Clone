@@ -21,7 +21,6 @@ public:
 		tileSprite.setColor(sf::Color(100, 100, 0, 100));
 
 		this->setPosition(sf::Vector2f(TILEMAP_POSITION_X, TILEMAP_POSITION_Y));
-
 		for (int i = 0; i < AMOUNT_OF_LINES; i++)
 		{
 			for (int j = 0; j < TILES_IN_A_LINE; j++)
