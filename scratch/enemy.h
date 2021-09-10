@@ -5,52 +5,42 @@
 #include "iostream"
 #include <SFML\Graphics.hpp>
 
+
+
 class Enemy : public Unit
 {
 public:
 	int line = 0;
+	float damage;
+	bool canMove = true;
 	void update(float dtAsSeconds, sf::Vector2f target) override {};
 	Enemy() 
 	{
 		animationSpeed = 1;
 		id = UnitID::none;
-		speed = -10.0;
-		hp = 100;
+		speed = BASE_ENEMY_SPEED;
+		hp = BASE_ENEMY_HP;
+		damage = BASE_ENEMY_DAMAGE;
 		setBoundRect(sf::FloatRect(0, 0, 10, TILESIZE));
 	}
 	sf::FloatRect getBoundRect() override
 	{
 		return boundRect;
+
 	} 
-};
-
-class EnemyContainer 
-{
-public:
-	Enemy enemy[MAX_ENEMIES];
-	int indexOfClosestEnemy = 0;
-	int indexOfClosestEnemyInLine[AMOUNT_OF_LINES];
-	int amountOfEnemies = 0;
-	float spawnCooldown = 0;
-	float SpawnRate = 0.5;
-
-	EnemyContainer() 
+	void allowMoving() 
 	{
-		for (int i = 0; i < AMOUNT_OF_LINES; i++) 
-		{
-			indexOfClosestEnemyInLine[i] = 0;
-		}
+		canMove = true;
 	}
-
-	void spawnEnemies(float dtAsSeconds);
-
-	void addNew(UnitID id, sf::Vector2f position, int line);
-
-	void destroy(int index);
-
-	void updateEnemies(float dtAsSeconds);
-
-	sf::Vector2f getClosestEnemy();
-
-	
+	void disAllowMoving() 
+	{
+		canMove = false;
+	}
+	//void move(sf::Vector2f position) override
+	//{
+	//	this->position -= position;
+	//	boundRect.left += position.x;
+	//	boundRect.top += position.y;
+	//}
 };
+

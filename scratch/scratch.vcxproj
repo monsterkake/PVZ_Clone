@@ -160,6 +160,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="defValues.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="enemyContainer.h" />
     <ClInclude Include="popUpWindow.h" />
     <ClInclude Include="researchPopUpWindow.h" />
     <ClInclude Include="technology.h" />

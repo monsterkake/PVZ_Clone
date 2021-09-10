@@ -33,6 +33,9 @@
     <Filter Include="Header Files\Technology">
       <UniqueIdentifier>{9400a019-21d0-41f1-a941-96949ea882a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Unit\enemy">
+      <UniqueIdentifier>{2c5e97cf-bc7f-4316-9169-b2aab5dedef5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,9 +92,6 @@
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
     <ClInclude Include="unitContainer.h">
-      <Filter>Header Files\Unit</Filter>
-    </ClInclude>
-    <ClInclude Include="enemy.h">
       <Filter>Header Files\Unit</Filter>
     </ClInclude>
     <ClInclude Include="projectileType.h">
@@ -156,6 +156,12 @@
     </ClInclude>
     <ClInclude Include="widget.h">
       <Filter>Header Files\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="enemyContainer.h">
+      <Filter>Header Files\Unit\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Header Files\Unit\enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -261,6 +261,11 @@ void Engine::input()
 				isShiftButtonPressed = true;
 				break;
 			}
+			if (event.key.code == sf::Keyboard::Q)
+			{
+				spawnEnemies = !spawnEnemies;
+				break;
+			}
 			break;
 			//If released
 		case sf::Event::KeyReleased:

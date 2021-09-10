@@ -19,7 +19,6 @@ class ResearchPopUpWindow : public PopUpWindow, public HasACooldown
 	sf::RectangleShape progressRectangle;
 
 	std::shared_ptr<TechnologyID> currentResearch;
-	//TechnologyID selectedResearch = TechnologyID::none;
 	TechnologyID targetedResearch = TechnologyID::none;
 	sf::Color clickedColor = sf::Color(50, 200, 50, 255);
 	sf::Color hoveredColor = sf::Color(200, 200, 200, 255);
@@ -133,16 +132,6 @@ public:
 				techTree.technologies[int(getCurrentResearch())].addPoints(researchIncome);
 	}
 
-	//void updateWidgets(sf::Vector2f mpos) 
-	//{
-	//	for (int i = 0; i < TECHNOLOGY_TREE_LENGTH; i++)
-	//	{
-	//		if()
-	//		technologyButtons[i].getText().setPosition(technologyButtons[i].getPosition() - this->getPosition());
-
-
-	//	}
-	//}
 
 	void updateSprite(sf::Vector2f mpos)
 	{

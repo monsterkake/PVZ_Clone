@@ -2,7 +2,7 @@
 #include <math.h>
 #include <iostream>
 
-void ProjectileContainer::addNew(ProjectileID id, sf::Vector2f position, int line)
+void ProjectileContainer::addNew(ProjectileID id, sf::Vector2f position, int line, std::shared_ptr<Enemy> ptrToClosestEnemy)
 {
 	for (int i = 0; i < MAX_PROJECTILES; i++)
 	{
@@ -18,7 +18,7 @@ void ProjectileContainer::addNew(ProjectileID id, sf::Vector2f position, int lin
 			if (id == ProjectileID::Rocket1)
 			{
 				projectiles[i] = std::shared_ptr<Projectile>(new Rocket);
-				
+				projectiles[i]->setTargetEnemy(ptrToClosestEnemy);
 			}
 			if (id == ProjectileID::Laser1)
 			{
@@ -42,14 +42,14 @@ void ProjectileContainer::destroy(int index)
 	projectileAmount--;
 }
 
-void ProjectileContainer::updateProjectiles(float dtAsSeconds, sf::Vector2f target)
+void ProjectileContainer::updateProjectiles(float dtAsSeconds)
 {
 	for (int i = 0; i < MAX_PROJECTILES; i++)
 	{
 		//If element occupied
 		if (projectiles[i] != nullptr)
 		{
-			projectiles[i]->update(dtAsSeconds, target);
+			projectiles[i]->update(dtAsSeconds);
 
 			if (projectiles[i]->id == ProjectileID::none)
 			{
@@ -59,7 +59,7 @@ void ProjectileContainer::updateProjectiles(float dtAsSeconds, sf::Vector2f targ
 	}
 }
 
-void Bullet::update(float dtAsSeconds, sf::Vector2f target)
+void Bullet::update(float dtAsSeconds)
 {
 	updateAnimation(dtAsSeconds);
 	move(sf::Vector2f(dtAsSeconds * speed, 0));
@@ -70,9 +70,26 @@ void Bullet::update(float dtAsSeconds, sf::Vector2f target)
 	}
 }
 
-void Rocket::update(float dtAsSeconds, sf::Vector2f target)
+void Rocket::update(float dtAsSeconds)
 {
+	
 	updateAnimation(dtAsSeconds);
+	if (ptrToClosestEnemy.get()->get()->getHp() < 0) 
+	{
+		targetIsDead = true;
+	}
+
+	if (!targetIsDead)
+	{
+		target = ptrToClosestEnemy.get()->get()->getPosition();
+	}
+	else
+	{
+		target += sf::Vector2f(2 * (position.x - prevPosition.x), 2 * (position.y - prevPosition.y));
+	}
+
+	prevPosition = position;
+
 	float cos_;
 	cos_ = cosf((target.y  - position.y) /
 		(sqrt(
@@ -100,9 +117,27 @@ void Rocket::update(float dtAsSeconds, sf::Vector2f target)
 
 
 	move(sf::Vector2f(dtAsSeconds * dx, dtAsSeconds * dy));
+
+	//Check if it flew off screen
+	if (position.x > (SPAWN_DISTANCE + TILESIZE * TILES_IN_A_LINE))
+	{
+		id = ProjectileID::none;
+	}
+	if (position.x < 0 - 500)
+	{
+		id = ProjectileID::none;
+	}
+	if (position.y > (SPAWN_DISTANCE + TILESIZE * TILES_IN_A_LINE))
+	{
+		id = ProjectileID::none;
+	}
+	if (position.y < 0 - 500)
+	{
+		id = ProjectileID::none;
+	}
 }
 
-void Laser::update(float dtAsSeconds, sf::Vector2f target)
+void Laser::update(float dtAsSeconds)
 {
 	updateAnimation(dtAsSeconds);
 	damage = 100.0 * dtAsSeconds;

@@ -3,6 +3,8 @@
 #include "defValues.h"
 #include "unitType.h"
 #include "unitID.h"
+#include <iostream>
+
 
 class Moveable 
 {
@@ -124,12 +126,32 @@ protected:
 	};
 };
 
-class Unit : public HasAnAnimation, public HasACooldown
+class HasHitPoints 
+{
+protected:
+	float hp;
+public:
+
+	void recieveDamage(float damage)
+	{
+		hp -= damage;
+	}
+	void setHp(float hp)
+	{
+		this->hp = hp;
+	}
+	float getHp()
+	{
+		return hp;
+	}
+};
+
+class Unit : public HasAnAnimation, public HasACooldown, public HasHitPoints
 {
 protected:
 	
 	float speed;
-	float hp;
+	
 	bool ReadyToFire = false;
 public:
 	UnitID id;
@@ -146,19 +168,6 @@ public:
 			return true;
 		}
 		return false;
-	}
-
-	void recieveDamage(float damage)
-	{
-		hp -= damage;
-	}
-	void setHp(float hp)
-	{
-		this->hp = hp;
-	}
-	float getHp()
-	{
-		return hp;
 	}
 	void setSpeed(float speed)
 	{

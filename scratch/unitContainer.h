@@ -1,7 +1,7 @@
 #pragma once
 #include "patterns.h"
 #include "unitType.h"
-#include "enemy.h"
+#include "enemyContainer.h"
 #include "defValues.h"
 #include "unit.h"
 
@@ -52,7 +52,10 @@ public:
 		{
 			if (Units[i] != nullptr)
 			{
-				Units[i]->update(dtAsSeconds,enemyContainer.getClosestEnemy());
+				if (enemyContainer.getClosestEnemy() != nullptr)
+				{
+					Units[i]->update(dtAsSeconds,enemyContainer.getClosestEnemy()->getPosition());
+				}
 			}
 		}
 		enemyContainer.updateEnemies(dtAsSeconds);

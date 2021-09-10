@@ -72,39 +72,6 @@ void Engine::draw()
 	//Draw Building Buttons
 	gameInterface.updateSprite(mousePosition,resourseEnergy,resourseMinerals);
 	renderTexture.draw(gameInterface.getSprite());
-	//ResourseContainer.buttonBaseSprite.setScale(0.5, 0.5);
-	//for (int i = 0; i < AMOUNT_OF_BUILDING_BUTTONS; i++)
-	//{
-	//	ResourseContainer.buttonBaseSprite.setPosition(gameInterface.BuildingButtons[i].getPosition());
-	//	renderTexture.draw(ResourseContainer.buttonBaseSprite);
-	//	renderTexture.draw(gameInterface.BuildingButtons[i].getText());
-	//}
-	////Draw economy Buttons
-	//for (int i = 0; i < AMOUNT_OF_ECONOMY_BUTTONS; i++)
-	//{
-	//	ResourseContainer.buttonBaseSprite.setPosition(gameInterface.economyButtons[i].getPosition());
-	//	renderTexture.draw(ResourseContainer.buttonBaseSprite);
-	//	renderTexture.draw(gameInterface.economyButtons[i].getText());
-	//}
-
-	////Draw destroy button
-	//ResourseContainer.buttonBaseSprite.setPosition(gameInterface.destroyButton.getPosition());
-	//renderTexture.draw(ResourseContainer.buttonBaseSprite);
-	//renderTexture.draw(gameInterface.destroyButton.getText());
-
-	////Draw research button
-	//ResourseContainer.buttonBaseSprite.setPosition(gameInterface.researchButton.getPosition());
-	//renderTexture.draw(ResourseContainer.buttonBaseSprite);
-	//renderTexture.draw(gameInterface.researchButton.getText());
-
-	////return sprite scale to normal
-	//ResourseContainer.buttonBaseSprite.setScale(1, 1);
-
-	////Draw labels
-	//gameInterface.energyLabel.setText(std::string(": " + std::to_string(resourseEnergy)));
-	//renderTexture.draw(gameInterface.energyLabel.getText());
-	//gameInterface.mineralsLabel.setText(std::string(": " + std::to_string(resourseMinerals)));
-	//renderTexture.draw(gameInterface.mineralsLabel.getText());
 
 	//Draw Projectiles
 	for (int i = 0; i < MAX_PROJECTILES; i++)
@@ -128,20 +95,22 @@ void Engine::draw()
 				renderTexture.draw(ResourseContainer.AnimationRocket);
 				break;
 			case ProjectileID::Laser1:
-				ResourseContainer.redRect.setPosition
+				/*ResourseContainer.redRect.setPosition
 				(UnitContainer.enemyContainer.enemy[
 					UnitContainer.enemyContainer.indexOfClosestEnemyInLine[
-						ProjectileContainer.projectiles[i]->line]].getPosition());
+						ProjectileContainer.projectiles[i]->line]]->getPosition());*/
+				if (UnitContainer.enemyContainer.getClosestEnemyInLine(ProjectileContainer.projectiles[i]->line) != nullptr)
+				{
+					ResourseContainer.LaserBodyAnimation.setTextureRect(ProjectileContainer.projectiles[i]->getFrame());
+					ResourseContainer.LaserBodyAnimation.setPosition(ProjectileContainer.projectiles[i]->getPosition());
 
-				ResourseContainer.LaserBodyAnimation.setTextureRect(ProjectileContainer.projectiles[i]->getFrame());
-				ResourseContainer.LaserBodyAnimation.setPosition(ProjectileContainer.projectiles[i]->getPosition());
+					ResourseContainer.LaserBodyAnimation.setScale(sf::Vector2f((
+						UnitContainer.enemyContainer.getClosestEnemyInLine(ProjectileContainer.projectiles[i]->line)->getPosition().x -
+						ProjectileContainer.projectiles[i]->getPosition().x) / SPRITE_SIZE, 1));
+
+					renderTexture.draw(ResourseContainer.LaserBodyAnimation);
+				}
 				
-				ResourseContainer.LaserBodyAnimation.setScale(sf::Vector2f((
-					UnitContainer.enemyContainer.enemy[
-						UnitContainer.enemyContainer.indexOfClosestEnemyInLine[
-							ProjectileContainer.projectiles[i]->line]].getPosition().x -
-								ProjectileContainer.projectiles[i]->getPosition().x) / SPRITE_SIZE,1 ));
-				renderTexture.draw(ResourseContainer.LaserBodyAnimation);
 
 
 				break;
@@ -163,21 +132,21 @@ void Engine::draw()
 	//Draw Enemies
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		if (UnitContainer.enemyContainer.enemy[i].id != UnitID::none)
+		if (UnitContainer.enemyContainer.enemy[i] != nullptr)
 		{
 
-			switch (UnitContainer.enemyContainer.enemy[i].id)
+			switch (UnitContainer.enemyContainer.enemy[i]->id)
 			{
 			case UnitID::e0:
 
-				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
-				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i]->getFrame());
+				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i]->getPosition());
 				renderTexture.draw(ResourseContainer.AnimationTest);
 
 				break;
 			case UnitID::e1:
-				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
-				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i]->getFrame());
+				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i]->getPosition());
 				renderTexture.draw(ResourseContainer.AnimationTest);
 				break;
 			default:break;
@@ -185,9 +154,9 @@ void Engine::draw()
 			// draw debug rect
 			if (DebugMode)
 			{
-				ResourseContainer.debugRect.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
-				ResourseContainer.debugRect.setSize(sf::Vector2f(UnitContainer.enemyContainer.enemy[i].getBoundRect().width,
-					UnitContainer.enemyContainer.enemy[i].getBoundRect().height));
+				ResourseContainer.debugRect.setPosition(UnitContainer.enemyContainer.enemy[i]->getPosition());
+				ResourseContainer.debugRect.setSize(sf::Vector2f(UnitContainer.enemyContainer.enemy[i]->getBoundRect().width,
+					UnitContainer.enemyContainer.enemy[i]->getBoundRect().height));
 				renderTexture.draw(ResourseContainer.debugRect);
 			}
 		}
@@ -202,13 +171,13 @@ void Engine::draw()
 			{
 			case UnitID::e0:
 
-				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
-				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i]->getFrame());
+				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i]->getPosition());
 				renderTexture.draw(ResourseContainer.AnimationTest);
 				break;
 			case UnitID::e1:
-				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i].getFrame());
-				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
+				ResourseContainer.AnimationTest.setTextureRect(UnitContainer.enemyContainer.enemy[i]->getFrame());
+				ResourseContainer.AnimationTest.setPosition(UnitContainer.enemyContainer.enemy[i]->getPosition());
 				renderTexture.draw(ResourseContainer.AnimationTest);
 				break;
 			case UnitID::Fighter1:
@@ -220,9 +189,9 @@ void Engine::draw()
 			// draw debug rect
 			if (DebugMode)
 			{
-				ResourseContainer.debugRect.setPosition(UnitContainer.enemyContainer.enemy[i].getPosition());
-				ResourseContainer.debugRect.setSize(sf::Vector2f(UnitContainer.enemyContainer.enemy[i].getBoundRect().width,
-					UnitContainer.enemyContainer.enemy[i].getBoundRect().height));
+				ResourseContainer.debugRect.setPosition(UnitContainer.enemyContainer.enemy[i]->getPosition());
+				ResourseContainer.debugRect.setSize(sf::Vector2f(UnitContainer.enemyContainer.enemy[i]->getBoundRect().width,
+					UnitContainer.enemyContainer.enemy[i]->getBoundRect().height));
 				renderTexture.draw(ResourseContainer.debugRect);
 			}
 		}

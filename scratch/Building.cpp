@@ -2,11 +2,6 @@
 #include <iostream>
 #include "defValues.h"
 
-Building::Building()
-{
-
-}
-
 BuildingType Building::getType()
 {
 	return type;

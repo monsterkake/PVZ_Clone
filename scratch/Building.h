@@ -3,16 +3,20 @@
 #include <SFML\Graphics.hpp>
 #include <memory.h>
 #include "BuildingID.h"
-//#include "projectileID.h"
 #include "actionID.h"
 #include "buildingType.h"
 
-class Building : public HasAnAnimation, public HasACooldown
+class Building : public HasAnAnimation, public HasACooldown,public HasHitPoints
 {
 public:
     bool hasAChild = false;
     BuildingType type = BuildingType::none;
-    Building();
+    Building() 
+    {
+        hp = 100.0;
+
+        boundRect = sf::FloatRect(0,0,Building_SIZE, Building_SIZE);
+    };
     BuildingID id = BuildingID::none;
     virtual ActionID update(float dtAsSeconds) = 0;
     BuildingType getType();

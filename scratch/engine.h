@@ -45,6 +45,7 @@ private:
     bool isShiftButtonPressed = false;
 
     bool DebugMode = false;
+    bool spawnEnemies = true;
 
     int resourseEnergy = 10;
     int resourseMinerals = 10;
