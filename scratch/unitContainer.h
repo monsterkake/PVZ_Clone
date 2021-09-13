@@ -8,7 +8,7 @@
 class UnitContainer 
 {
 public:
-	EnemyContainer enemyContainer;
+	std::shared_ptr<EnemyContainer> enemyContainer;
 	std::shared_ptr<Unit> Units[MAX_UNITS];
 	UnitContainer() 
 	{
@@ -52,12 +52,12 @@ public:
 		{
 			if (Units[i] != nullptr)
 			{
-				if (enemyContainer.getClosestEnemy() != nullptr)
+				if (enemyContainer->getClosestEnemy() != nullptr)
 				{
-					Units[i]->update(dtAsSeconds,enemyContainer.getClosestEnemy()->getPosition());
+					Units[i]->update(dtAsSeconds,enemyContainer->getClosestEnemy()->getPosition());
 				}
 			}
 		}
-		enemyContainer.updateEnemies(dtAsSeconds);
+		enemyContainer->updateEnemies(dtAsSeconds);
 	}
 };

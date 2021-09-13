@@ -14,6 +14,8 @@ Engine::Engine()
         Style::Fullscreen);
  
     renderTexture.create(resolution.x, resolution.y);
+    enemyContainer = std::shared_ptr<EnemyContainer>(new EnemyContainer);
+    UnitContainer.enemyContainer = enemyContainer;
 }
 
 void Engine::start()

@@ -33,7 +33,7 @@
     <Filter Include="Header Files\Technology">
       <UniqueIdentifier>{9400a019-21d0-41f1-a941-96949ea882a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Unit\enemy">
+    <Filter Include="Header Files\enemy">
       <UniqueIdentifier>{2c5e97cf-bc7f-4316-9169-b2aab5dedef5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -158,10 +158,13 @@
       <Filter>Header Files\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="enemyContainer.h">
-      <Filter>Header Files\Unit\enemy</Filter>
+      <Filter>Header Files\enemy</Filter>
     </ClInclude>
     <ClInclude Include="enemy.h">
-      <Filter>Header Files\Unit\enemy</Filter>
+      <Filter>Header Files\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="enemyID.h">
+      <Filter>Header Files\enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

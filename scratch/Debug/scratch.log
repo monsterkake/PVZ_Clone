@@ -1,20 +1,41 @@
-﻿  update.cpp
-D:\docs\githubRepo\scratch\scratch\patterns.h(191,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
+﻿  Building.cpp
 D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\patterns.h(194,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-D:\docs\githubRepo\scratch\scratch\patterns.h(194,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  draw.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
           with
           [
               T=float
@@ -57,8 +78,442 @@ D:\docs\githubRepo\scratch\scratch\tileMap.h(31,72): warning C4244: 'argument': 
           [
               T=int
           ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
 D:\docs\githubRepo\scratch\scratch\projectile.h(69,1): warning C4305: '=': truncation from 'double' to 'float'
-D:\docs\githubRepo\scratch\scratch\enemyContainer.h(37,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\docs\githubRepo\scratch\scratch\enemyContainer.h(38,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(48,1): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(56,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(132,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\docs\githubRepo\scratch\scratch\draw.cpp(73,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\draw.cpp(73,43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  enemy.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
+  engine.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,107): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\projectile.h(69,1): warning C4305: '=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemyContainer.h(38,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(48,1): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(56,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(132,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\docs\githubRepo\scratch\scratch\engine.cpp(8,47): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(9,47): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(12,55): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(12,41): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(16,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\engine.cpp(16,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  input.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,107): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\projectile.h(69,1): warning C4305: '=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemyContainer.h(38,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(48,1): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(56,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(132,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,107): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\projectile.h(69,1): warning C4305: '=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemyContainer.h(38,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(48,1): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(56,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(132,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  projectile.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\projectile.h(69,1): warning C4305: '=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\projectile.cpp(94,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\projectile.cpp(105,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\docs\githubRepo\scratch\scratch\projectile.cpp(143,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  tile.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  unit.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+  update.cpp
+D:\docs\githubRepo\scratch\scratch\patterns.h(192,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(193,49): warning C4244: '=': conversion from 'unsigned int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,50): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\patterns.h(195,36): warning C4244: 'argument': conversion from 'T' to 'unsigned int', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(28,43): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(30,50): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,107): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\tileMap.h(31,72): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\docs\githubRepo\scratch\scratch\enemy.h(72,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(99,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(101,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(123,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(124,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemy.h(172,1): warning C4305: '*=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\projectile.h(69,1): warning C4305: '=': truncation from 'double' to 'float'
+D:\docs\githubRepo\scratch\scratch\enemyContainer.h(38,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
@@ -68,4 +523,5 @@ D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(56,63): warning C4244: 
 D:\docs\githubRepo\scratch\scratch\researchPopUpWindow.h(132,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 D:\docs\githubRepo\scratch\scratch\update.cpp(51,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\docs\githubRepo\scratch\scratch\update.cpp(53,15): warning C4101: 'id_projectile': unreferenced local variable
+  Generating Code...
   scratch.vcxproj -> D:\docs\githubRepo\scratch\Debug\scratch.exe

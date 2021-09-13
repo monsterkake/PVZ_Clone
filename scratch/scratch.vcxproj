@@ -159,6 +159,7 @@
     <ClInclude Include="buildingType.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="defValues.h" />
+    <ClInclude Include="enemyID.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemyContainer.h" />
     <ClInclude Include="popUpWindow.h" />

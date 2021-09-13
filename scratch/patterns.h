@@ -130,6 +130,7 @@ class HasHitPoints
 {
 protected:
 	float hp;
+	float maxHp = 0;
 public:
 
 	void recieveDamage(float damage)
@@ -213,3 +214,17 @@ public:
 		return angle;
 	}
 };
+
+class Item
+{
+public:
+	Item();
+};
+
+class Container
+{
+public:
+	Container();
+	std::shared_ptr<Item> items;
+};
+

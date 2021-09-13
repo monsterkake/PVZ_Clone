@@ -74,7 +74,7 @@ void Rocket::update(float dtAsSeconds)
 {
 	
 	updateAnimation(dtAsSeconds);
-	if (ptrToClosestEnemy.get()->get()->getHp() < 0) 
+	if (ptrToClosestEnemy.get()->get()->getHp() <= 0) 
 	{
 		targetIsDead = true;
 	}
@@ -91,7 +91,7 @@ void Rocket::update(float dtAsSeconds)
 	prevPosition = position;
 
 	float cos_;
-	cos_ = cosf((target.y  - position.y) /
+	cos_ = cosf(float(target.y  - position.y) /
 		(sqrt(
 			pow(
 				target.x - position.x, 2)

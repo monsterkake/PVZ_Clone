@@ -38,7 +38,7 @@ public:
 	void update(float dtAsSeconds) override;
 	Bullet() 
 	{
-		damage = 10;
+		damage = 10.0;
 		speed = 1000.0;
 		type = ProjectileType::Bullet;
 	}
@@ -54,7 +54,7 @@ public:
 	Rocket() 
 	{
 		//setFrameSize(PROJECTILE_SIZE);
-		damage = 10;
+		damage = 10.0;
 		type = ProjectileType::Rocket;
 		speed = 500.0;
 	}
@@ -67,7 +67,7 @@ public:
 	Laser()
 	{
 		animationSpeed = 0.1;
-		damage = 10;
+		damage = 10.0;
 		type = ProjectileType::Laser;
 		speed = 0.0;
 	}

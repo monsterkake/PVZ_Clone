@@ -1,6 +1,7 @@
 #pragma once
 #include "enemy.h"
 #include "defValues.h"
+#include "enemyID.h"
 
 class EnemyContainer
 {
@@ -33,33 +34,32 @@ public:
 
 			auto randomline = (rand() % AMOUNT_OF_LINES);
 
-			addNew(UnitID::e0, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
+			addNew(EnemyID::Scout, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
 				randomline * TILESIZE + TILEMAP_POSITION_Y),
 				randomline);
 
 		}
 	}
 
-	void addNew(UnitID id, sf::Vector2f position, int line)
+	void addNew(EnemyID id, sf::Vector2f position, int line)
 	{
 		for (int i = 0; i < MAX_ENEMIES; i++)
 		{
 			//If element is not occupied
 			if (enemy[i] == nullptr)
 			{
-				enemy[i] = std::shared_ptr<Enemy>(new Enemy);
+				enemy[i] = std::shared_ptr<Enemy>(new Avoider);
 				if(ClosestEnemyInLine[line] == nullptr)
 					ClosestEnemyInLine[line] = enemy[i];
 				if (ClosestEnemy == nullptr)
 					ClosestEnemy = enemy[i];
-				enemy[i]->line = line;
+				enemy[i]->setLine(line);
 				enemy[i]->id = id;
 				enemy[i]->setPosition(position);
 				amountOfEnemies++;
 				switch (id)
 				{
-				case UnitID::e0:
-					enemy[i]->setHp(100);
+				case EnemyID::Scout:
 					break;
 				default:break;
 				}
@@ -82,23 +82,26 @@ public:
 
 	void updateEnemies(float dtAsSeconds)
 	{
+		for (int i = 0; i < AMOUNT_OF_LINES; i++)
+		{
+			ClosestEnemyInLine[i] = nullptr;
+		}
+
 		for (int i = 0; i < MAX_ENEMIES; i++)
 		{
 			//If element is occupied
 			if (enemy[i] != nullptr)
 			{
-				if (enemy[i]->getHp() < 0) 
+				if (enemy[i]->getHp() <= 0) 
 				{
 					destroy(i);
 				}
 				else
 				{
-					if (enemy[i]->canMove)
-					{
-						enemy[i]->move(sf::Vector2f(dtAsSeconds * enemy[i]->getSpeed(), 0));
-					}
-					enemy[i]->updateAnimation(dtAsSeconds);
-				
+					enemy[i]->update(dtAsSeconds);
+
+					
+
 					if (ClosestEnemy == nullptr) 
 					{
 						ClosestEnemy = enemy[i];
@@ -122,9 +125,7 @@ public:
 							ClosestEnemyInLine[enemy[i]->line] = enemy[i];
 						}
 					}
-					
 				}
-				
 			}
 		}
 	}

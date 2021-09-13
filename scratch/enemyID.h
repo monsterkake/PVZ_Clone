@@ -1,6 +1,10 @@
 #pragma once
 
-enum class EnemyID 
+enum class EnemyID
 {
-	none,e0, e1,e2,e3,e4
+	none, Scout, Swarmling, Avoider, Lardster, Animuta, BigDaddy,
+	PsychicEmitter, ThreeHundredWatts, Symbyont,
+	YoungQueen, Ravager, Infestor, SaltRunner,
+	NestedLardster, CumSpreader, GigaMuta,
+
 };

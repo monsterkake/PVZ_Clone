@@ -10,6 +10,7 @@
 //#include "enemy.h"
 #include "buildingType.h"
 #include "unitContainer.h"
+#include "enemyContainer.h"
 #include "researchPopUpWindow.h"
 #include "techTree.h"
 
@@ -28,6 +29,8 @@ private:
     TileMap tileMap;
     ProjectileContainer ProjectileContainer;
     UnitContainer UnitContainer;
+    std::shared_ptr<EnemyContainer> enemyContainer;
+    //EnemyContainer enemyContainer;
     
     ResearchPopUpWindow researchWindow;
 

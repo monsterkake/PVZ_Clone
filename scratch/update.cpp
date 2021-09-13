@@ -21,7 +21,7 @@ void Engine::update(float dtAsSeconds)
 		resourseEnergy = 10000;
 		resourseMinerals = 10000;
 	}
-	
+
 	// income update
 	frames++;
 	timer -= dtAsSeconds;
@@ -36,10 +36,10 @@ void Engine::update(float dtAsSeconds)
 		timer = 1;
 		resourseEnergy += baseEnergyIncome;
 		resourseMinerals += baseMineralsIncome;
-		
+
 	}
 
-	
+
 
 	//move PopUpWindows
 	if (researchWindow.isGrabbed())
@@ -59,10 +59,10 @@ void Engine::update(float dtAsSeconds)
 			// if building exists
 			if (tileMap.lines[i].tiles[j].building != nullptr)
 			{
-				if (tileMap.lines[i].tiles[j].building->getHp() < 0) 
+				if (tileMap.lines[i].tiles[j].building->getHp() < 0)
 				{
 					tileMap.lines[i].tiles[j].removeBuilding();
-				} 
+				}
 				else
 				{
 					id_action = tileMap.lines[i].tiles[j].building->update(dtAsSeconds);
@@ -70,28 +70,28 @@ void Engine::update(float dtAsSeconds)
 					if (id_action != ActionID::none)
 					{
 						// for line - dependant actions
-						if (UnitContainer.enemyContainer.getClosestEnemyInLine(i) != nullptr)
+						if (enemyContainer->getClosestEnemyInLine(i) != nullptr)
 						{
 							switch (id_action)
 							{
 							case ActionID::ShootProjectile:
-								ProjectileContainer.addNew(ProjectileID::Bullet1, tileMap.lines[i].tiles[j].building->getPosition(), i, UnitContainer.enemyContainer.getClosestEnemy()); /* i - current line*/
+								ProjectileContainer.addNew(ProjectileID::Bullet1, tileMap.lines[i].tiles[j].building->getPosition(), i, enemyContainer->getClosestEnemy()); /* i - current line*/
 								break;
 							case ActionID::ShootLaser:
-								if (UnitContainer.enemyContainer.getClosestEnemyInLine(i) != nullptr)
-									ProjectileContainer.addNew(ProjectileID::Laser1, tileMap.lines[i].tiles[j].building->getPosition(), i, UnitContainer.enemyContainer.getClosestEnemy()); /* i - current line*/
+								if (enemyContainer->getClosestEnemyInLine(i) != nullptr)
+									ProjectileContainer.addNew(ProjectileID::Laser1, tileMap.lines[i].tiles[j].building->getPosition(), i, enemyContainer->getClosestEnemy()); /* i - current line*/
 								break;
 							default:
 								break;
 							}
 						}
 						// fore line - independant actions
-						if (UnitContainer.enemyContainer.getClosestEnemy() != nullptr)
+						if (enemyContainer->getClosestEnemy() != nullptr)
 						{
 							switch (id_action)
 							{
 							case ActionID::LaunchRocket:
-								ProjectileContainer.addNew(ProjectileID::Rocket1, tileMap.lines[i].tiles[j].building->getPosition(), i, UnitContainer.enemyContainer.getClosestEnemy()); /* i - current line*/
+								ProjectileContainer.addNew(ProjectileID::Rocket1, tileMap.lines[i].tiles[j].building->getPosition(), i, enemyContainer->getClosestEnemy()); /* i - current line*/
 								break;
 							case ActionID::ReleaseFighter:
 								UnitContainer.addNew(UnitID::Fighter1, tileMap.lines[i].tiles[j].building->getPosition(), sf::Vector2i(i, j));
@@ -114,19 +114,17 @@ void Engine::update(float dtAsSeconds)
 						}
 					}
 				}
-				
+
 			}
 		}
 	}
 
 	ProjectileContainer.updateProjectiles(dtAsSeconds);
-	
+
 
 	if (spawnEnemies)
 	{
-		//spawnEnemies = false;
-		UnitContainer.enemyContainer.spawnEnemies(dtAsSeconds);
-		//EnemyContainer.addNew(UnitID::e0, sf::Vector2f(1800, 500));
+		enemyContainer->spawnEnemies(dtAsSeconds);
 	}
 
 	//Update Units and Enemies
@@ -134,23 +132,21 @@ void Engine::update(float dtAsSeconds)
 
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		if (UnitContainer.enemyContainer.enemy[i] != nullptr) 
+		if (enemyContainer->enemy[i] != nullptr)
 		{
-			UnitContainer.enemyContainer.enemy[i]->allowMoving();
+			enemyContainer->enemy[i]->allowMoving();
 			for (int j = 0; j < TILES_IN_A_LINE; j++)
 			{
-				if (tileMap.lines[UnitContainer.enemyContainer.enemy[i]->line].tiles[j].building != nullptr)
-				{					
-					if (UnitContainer.enemyContainer.enemy[i]->getBoundRect().intersects(tileMap.lines[UnitContainer.enemyContainer.enemy[i]->line].tiles[j].building->getBoundRect()))
+				if (tileMap.lines[enemyContainer->enemy[i]->line].tiles[j].building != nullptr)
+				{
+					if (enemyContainer->enemy[i]->getBoundRect().intersects(tileMap.lines[enemyContainer->enemy[i]->line].tiles[j].building->getBoundRect()))
 					{
-						UnitContainer.enemyContainer.enemy[i]->disAllowMoving();
-						tileMap.lines[UnitContainer.enemyContainer.enemy[i]->line].tiles[j].building->recieveDamage(UnitContainer.enemyContainer.enemy[i]->damage * dtAsSeconds);
+						enemyContainer->enemy[i]->disAllowMoving();
+						tileMap.lines[enemyContainer->enemy[i]->line].tiles[j].building->recieveDamage(enemyContainer->enemy[i]->damage * dtAsSeconds);
 					}
 				}
-				
 			}
 		}
-		
 	}
 	// Process fighter shooting
 	for (int i = 0; i < MAX_UNITS; i++)
@@ -162,7 +158,7 @@ void Engine::update(float dtAsSeconds)
 				switch (UnitContainer.Units[i]->id)
 				{
 				case UnitID::Fighter1:
-					ProjectileContainer.addNew(ProjectileID::Bullet1, UnitContainer.Units[i]->getPosition(), 0, UnitContainer.enemyContainer.getClosestEnemy());
+					ProjectileContainer.addNew(ProjectileID::Bullet1, UnitContainer.Units[i]->getPosition(), 0, enemyContainer->getClosestEnemy());
 					break;
 				default:
 					break;
@@ -173,7 +169,7 @@ void Engine::update(float dtAsSeconds)
 	//Check projectile collisions
 	for (int i = 0; i < MAX_ENEMIES; i++)
 	{
-		if (UnitContainer.enemyContainer.enemy[i] != nullptr)
+		if (enemyContainer->enemy[i] != nullptr)
 		{
 			for (int j = 0; j < MAX_PROJECTILES; j++)
 			{
@@ -182,25 +178,21 @@ void Engine::update(float dtAsSeconds)
 					// if Projectile.type is bullet
 					if (ProjectileContainer.projectiles[j]->type == ProjectileType::Bullet)
 					{
-						// if They are on the same line
-						//if (ProjectileContainer.Projectiles[j].line == EnemyContainer.enemy[i].line) 
-						//{
-						if (ProjectileContainer.projectiles[j]->getBoundRect().intersects(UnitContainer.enemyContainer.enemy[i]->getBoundRect()))
-						{
-							UnitContainer.enemyContainer.enemy[i]->recieveDamage(ProjectileContainer.projectiles[j]->damage);
-							ProjectileContainer.destroy(j);
 
+						if (ProjectileContainer.projectiles[j]->getBoundRect().intersects(enemyContainer->enemy[i]->getBoundRect()))
+						{
+							enemyContainer->enemy[i]->recieveDamage(ProjectileContainer.projectiles[j]->damage);
+							ProjectileContainer.destroy(j);
 						}
-						//}
 
 					}
 					else
 						// if Projectile type is Rocket
 						if (ProjectileContainer.projectiles[j]->type == ProjectileType::Rocket)
 						{
-							if (ProjectileContainer.projectiles[j]->getBoundRect().intersects(UnitContainer.enemyContainer.enemy[i]->getBoundRect()))
+							if (ProjectileContainer.projectiles[j]->getBoundRect().intersects(enemyContainer->enemy[i]->getBoundRect()))
 							{
-								UnitContainer.enemyContainer.enemy[i]->recieveDamage(ProjectileContainer.projectiles[j]->damage);
+								enemyContainer->enemy[i]->recieveDamage(ProjectileContainer.projectiles[j]->damage);
 								ProjectileContainer.destroy(j);
 							}
 						}
@@ -216,9 +208,9 @@ void Engine::update(float dtAsSeconds)
 			if (ProjectileContainer.projectiles[i]->type == ProjectileType::Laser)
 			{
 
-				if (UnitContainer.enemyContainer.getClosestEnemyInLine(ProjectileContainer.projectiles[i]->line) != nullptr)
+				if (enemyContainer->getClosestEnemyInLine(ProjectileContainer.projectiles[i]->line) != nullptr)
 				{
-					UnitContainer.enemyContainer.getClosestEnemyInLine(ProjectileContainer.projectiles[i]->line)->recieveDamage(ProjectileContainer.projectiles[i]->damage);
+					enemyContainer->getClosestEnemyInLine(ProjectileContainer.projectiles[i]->line)->recieveDamage(ProjectileContainer.projectiles[i]->damage);
 				}
 			}
 		}
