@@ -215,16 +215,3 @@ public:
 	}
 };
 
-class Item
-{
-public:
-	Item();
-};
-
-class Container
-{
-public:
-	Container();
-	std::shared_ptr<Item> items;
-};
-

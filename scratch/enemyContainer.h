@@ -3,7 +3,7 @@
 #include "defValues.h"
 #include "enemyID.h"
 
-class EnemyContainer
+class EnemyContainer 
 {
 public:
 	std::shared_ptr<Enemy> enemy[MAX_ENEMIES];
@@ -12,7 +12,7 @@ public:
 	int amountOfEnemies = 0;
 	float spawnCooldown = 0;
 	float SpawnRate = 0.5;
-
+	int size = MAX_ENEMIES;
 	EnemyContainer()
 	{
 		for (int i = 0; i < AMOUNT_OF_LINES; i++)
@@ -25,6 +25,8 @@ public:
 		}
 	}
 
+	bool allowSpawn = false;
+
 	void spawnEnemies(float dtAsSeconds)
 	{
 		spawnCooldown -= dtAsSeconds;
@@ -33,36 +35,86 @@ public:
 			spawnCooldown = SpawnRate;
 
 			auto randomline = (rand() % AMOUNT_OF_LINES);
-
-			addNew(EnemyID::Scout, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
+			if (allowSpawn) 
+			{
+				allowSpawn = false;
+				addNew(EnemyID::BigDaddy, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
+					randomline * TILESIZE + TILEMAP_POSITION_Y),
+					randomline);
+			}
+			addNew(EnemyID::Swarmling, sf::Vector2f(TILES_IN_A_LINE * TILESIZE + SPAWN_DISTANCE,
 				randomline * TILESIZE + TILEMAP_POSITION_Y),
 				randomline);
-
+			
 		}
 	}
 
 	void addNew(EnemyID id, sf::Vector2f position, int line)
 	{
+		//EnemyID savedId = id;
 		for (int i = 0; i < MAX_ENEMIES; i++)
 		{
 			//If element is not occupied
 			if (enemy[i] == nullptr)
 			{
-				enemy[i] = std::shared_ptr<Enemy>(new Avoider);
+				switch (id)
+				{
+				case EnemyID::none:
+					return;
+				case EnemyID::Scout:
+					enemy[i] = std::shared_ptr<Enemy>(new Scout);
+					break;
+				case EnemyID::Swarmling:
+					enemy[i] = std::shared_ptr<Enemy>(new Swarmling);
+					break;
+				case EnemyID::Avoider:
+					enemy[i] = std::shared_ptr<Enemy>(new Avoider);
+					break;
+				case EnemyID::Lardster:
+					enemy[i] = std::shared_ptr<Enemy>(new Lardster);
+					break;
+				case EnemyID::Animuta:
+					enemy[i] = std::shared_ptr<Enemy>(new Animuta);
+					break;
+				case EnemyID::BigDaddy:
+					enemy[i] = std::shared_ptr<Enemy>(new BigDaddy);
+					break;
+				case EnemyID::PsychicEmitter:
+					//enemy[i] = std::shared_ptr<Enemy>(new PsychicEmitter);
+					break;
+				case EnemyID::ThreeHundredWatts:
+					//enemy[i] = std::shared_ptr<Enemy>(new ThreeHundredWatts);
+					break;
+				case EnemyID::Symbyont:
+					//enemy[i] = std::shared_ptr<Enemy>(new Symbyont);
+					break;
+				case EnemyID::YoungQueen:
+					break;
+				case EnemyID::Ravager:
+					break;
+				case EnemyID::Infestor:
+					break;
+				case EnemyID::SaltRunner:
+					break;
+				case EnemyID::NestedLardster:
+					break;
+				case EnemyID::CumSpreader:
+					break;
+				case EnemyID::GigaMuta:
+					break;
+				default:
+					break;
+				}
+				
 				if(ClosestEnemyInLine[line] == nullptr)
 					ClosestEnemyInLine[line] = enemy[i];
 				if (ClosestEnemy == nullptr)
 					ClosestEnemy = enemy[i];
 				enemy[i]->setLine(line);
-				enemy[i]->id = id;
+				//enemy[i]->id = id;
+				
 				enemy[i]->setPosition(position);
 				amountOfEnemies++;
-				switch (id)
-				{
-				case EnemyID::Scout:
-					break;
-				default:break;
-				}
 				return;
 			}
 		}
@@ -98,9 +150,7 @@ public:
 				}
 				else
 				{
-					enemy[i]->update(dtAsSeconds);
-
-					
+					enemy[i]->update(dtAsSeconds, enemy, size);
 
 					if (ClosestEnemy == nullptr) 
 					{

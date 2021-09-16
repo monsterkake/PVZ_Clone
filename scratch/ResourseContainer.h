@@ -33,6 +33,12 @@ class ResourseContainer
     sf::Texture TextureAnimationRocket;
     sf::Texture TextureLaserBodyAnimation;
     sf::Texture TextureAnimationBullet;
+
+    //enemies
+    sf::Texture TextureAnimationScout;
+    sf::Texture TextureAnimationSwarmling;
+    sf::Texture TextureAnimationAvoider;
+
     public:
     
     sf::Font font;
@@ -67,6 +73,10 @@ class ResourseContainer
     sf::Sprite AnimationRocket;
     sf::Sprite LaserBodyAnimation;
     sf::Sprite AnimationBullet;
+    //enemies
+    sf::Sprite AnimationScout;
+    sf::Sprite AnimationSwarmling;
+    sf::Sprite AnimationAvoider;
 
     ResourseContainer();
     Vector2f getResizeCoeffitient();

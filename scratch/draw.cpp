@@ -139,17 +139,27 @@ void Engine::draw()
 			{
 			case EnemyID::Scout:
 
-				ResourseContainer.AnimationTest.setTextureRect(enemyContainer->enemy[i]->getFrame());
-				ResourseContainer.AnimationTest.setPosition(enemyContainer->enemy[i]->getPosition());
-				renderTexture.draw(ResourseContainer.AnimationTest);
+				ResourseContainer.AnimationScout.setTextureRect(enemyContainer->enemy[i]->getFrame());
+				ResourseContainer.AnimationScout.setPosition(enemyContainer->enemy[i]->getPosition());
+				renderTexture.draw(ResourseContainer.AnimationScout);
 
 				break;
 			case EnemyID::Swarmling:
+				ResourseContainer.AnimationSwarmling.setTextureRect(enemyContainer->enemy[i]->getFrame());
+				ResourseContainer.AnimationSwarmling.setPosition(enemyContainer->enemy[i]->getPosition());
+				renderTexture.draw(ResourseContainer.AnimationSwarmling);
+				break;
+			case EnemyID::Avoider:
+				ResourseContainer.AnimationAvoider.setTextureRect(enemyContainer->enemy[i]->getFrame());
+				ResourseContainer.AnimationAvoider.setPosition(enemyContainer->enemy[i]->getPosition());
+				renderTexture.draw(ResourseContainer.AnimationAvoider);
+				break;
+
+			default:
 				ResourseContainer.AnimationTest.setTextureRect(enemyContainer->enemy[i]->getFrame());
 				ResourseContainer.AnimationTest.setPosition(enemyContainer->enemy[i]->getPosition());
 				renderTexture.draw(ResourseContainer.AnimationTest);
 				break;
-			default:break;
 			}
 			// draw debug rect
 			if (DebugMode)

@@ -82,6 +82,18 @@ ResourseContainer::ResourseContainer()
 	AnimationBullet.setTexture(TextureAnimationBullet);
 
 	//AnimationRocket.setScale((float)PROJECTILE_SIZE / (float)SPRITE_SIZE, (float)PROJECTILE_SIZE / (float)SPRITE_SIZE);
+	//enemies
+	TextureAnimationScout.loadFromFile("resourses/animations/enemies/animationScout.png");
+	TextureAnimationSwarmling.loadFromFile("resourses/animations/enemies/animationSwarmling.png");
+	TextureAnimationAvoider.loadFromFile("resourses/animations/enemies/animationAvoider.png");
+
+	AnimationScout.setTexture(TextureAnimationScout);
+	AnimationSwarmling.setTexture(TextureAnimationSwarmling);
+	AnimationAvoider.setTexture(TextureAnimationAvoider);
+
+	AnimationScout.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationSwarmling.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
+	AnimationAvoider.setScale((float)TILESIZE / (float)SPRITE_SIZE, (float)TILESIZE / (float)SPRITE_SIZE);
 }
 
 Vector2f ResourseContainer::getResizeCoeffitient()
